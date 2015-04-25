@@ -1,57 +1,277 @@
+<!-- Pierre-André Le Ny - http://www.lenyconseil.fr -->
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Leaflet Quick Start Guide Example</title>
+	<title>GeoHistoricalData - webviewer</title>
 	<meta charset="utf-8" />
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-</head>
-<body>
-	<div id="map" style="width: 1200px; height: 800px"></div>
-
-	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-	<script>
-
-		var map = L.map('map').setView([51.505, -0.09], 13);
-
-		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'examples.map-i875mjb7'
-		}).addTo(map);
-
-
-		L.marker([51.5, -0.09]).addTo(map)
-			.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-
-		L.circle([51.508, -0.11], 500, {
-			color: 'red',
-			fillColor: '#f03',
-			fillOpacity: 0.5
-		}).addTo(map).bindPopup("I am a circle.");
-
-		L.polygon([
-			[51.509, -0.08],
-			[51.503, -0.06],
-			[51.51, -0.047]
-		]).addTo(map).bindPopup("I am a polygon.");
-
-
-		var popup = L.popup();
-
-		function onMapClick(e) {
-			popup
-				.setLatLng(e.latlng)
-				.setContent("You clicked the map at " + e.latlng.toString())
-				.openOn(map);
+	<link rel="stylesheet" href="Control.OSMGeocoder.css" />
+	<style type="text/css">
+		html, body {height: 98%;}	
+		#map { width: 100%; height: 95% }
+		.leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); }
+		/* on selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
+		#map:-webkit-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
+		#map:-moz-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
+		#map:full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
+		.leaflet-pseudo-fullscreen { position: fixed !important; width: 100% !important; height: 100% !important; top: 0px !important; left: 0px !important; z-index: 99999; }
+		
+                h3{margin-bottom: 7px;font-size: 15px}
+                h2 {margin-bottom: 7px;font-size: 16px}
+                h1 {margin-top: -15px;font-size: 18px;color:#000;opacity:1;}
+                p {font-size: 12px}
+		.fixed {
+  		position: fixed;
+  		top: 0;
+  		right: 50px;
+  		width: 250px;
+  		background-color: white;
 		}
+		#box
+		{  
+		/*width:250px;
+                height:600px; */
+                position : fixed;
+                top : 10px;
+                left : 10px;
+                background-color: white;
+                opacity:0.8;
+                border:1px dotted black;
+                margin:20px;
+                padding:15px;
+                display:block;
+                overflow: auto}
 
-		map.on('click', onMapClick);
+        #titre
+        {
+    	        background-color: #ccc;
+    	        opacity: 0.5;
+    	        padding:15px;
+    	        margin-top: -15px
+        }
+
+        #footer
+        {
+    	        background-color: #EFECCA;
+    	        opacity: 0.5;
+    	        padding:5px;
+    	        margin: 5px;
+        }
+
+	</style>
+
+	<script type="text/javascript">
+	function toggle_visibility(id) {
+	var e = document.getElementById(id);
+	e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+	}
+
+   function changeImage() {
+   		//url en absolu
+   		//alert(document.getElementById("toggle_icon").src);
+        if (document.getElementById("toggle_icon").src == "http://geohistoricaldata.org/icon_fleche_bas.png") 
+        {   
+            document.getElementById("toggle_icon").src = "http://geohistoricaldata.org/icon_fleche_haut.png";
+        }
+        else 
+        {
+            document.getElementById("toggle_icon").src = "http://geohistoricaldata.org/icon_fleche_bas.png";
+        }
+    }
 
 	</script>
+</head>
+<body>
+	<div id="map"></div>
+	<div id="box">
+	<p>
+	<div id="titre">	
+	<center><h1>GeoHistoricalData</h1>	
+	<p>Données issues de la vectorisation Cassini</p>
+	</p><a href="#"><img src="icon_fleche_bas.png" id="toggle_icon" onclick="toggle_visibility('legend');changeImage();" alt="Afficher la légende"/></a>
+	</center>
+	</div>
+	<div id="legend" style="display:none;">
+	<h2>Legend</h2>
+	<h3>Tableau d'assemblage</h3>
+        <img src="http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geohistoricaldata:france_cassini_table_assemblage" width="10"/>	
+	<h3>Voies</h3>
+	<img src="http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geohistoricaldata:france_cassini" width="75"/>
+	<h3>Surfaces</h3>
+	<img src="http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geohistoricaldata:france_cassini_taches_urbaines" width="75"/>
+	<h3>Hydrographie linéaire et surfacique</h3>
+	<img src="http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geohistoricaldata:france_cassini_hydro" width="10" /><br>
+	<img src="http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geohistoricaldata:france_cassini_surfaces_hydro" width="10"/>
+	<!-- fin legend -->
+	<!-- slider opacity -->
+	<h2>Cassini layer opacity</h2>
+	<input id="slide" type="range" min="0" max="1" step="0.1" value="1" onchange="updateOpacity(this.value)"><br>
+	<input type="checkbox" id="cassini-wms" value="Cassini WMS" onclick="LayerState('cassini-wms', ign_cassini);" checked><label>Cassini-WMS</label>		
+	</p>
+	</div>
+	</div>
+
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<script src="http://k4r573n.github.io/leaflet-control-osm-geocoder/Control.OSMGeocoder.js"></script>
+        <script src="https://rawgithub.com/mylen/leaflet.TileLayer.WMTS/master/leaflet-tilelayer-wmts.js"></script>
+	<script src="Control.FullScreen.js"></script>
+
+	<script>
+		var cassini_grille = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
+    	        layers: 'geohistoricaldata:france_cassini_table_assemblage',
+   		format: 'image/png',
+    	        transparent: true,
+    	        attribution: "GeoHistoricalData"
+		});
+                
+		var cassini_routes = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
+    	        layers: 'geohistoricaldata:france_cassini',
+   		format: 'image/png',
+    	        transparent: true,
+    	        attribution: "GeoHistoricalData"
+		});
+
+		var cassini_urbain = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
+    	        layers: 'geohistoricaldata:france_cassini_taches_urbaines',
+   		format: 'image/png',
+    	        transparent: true,
+    	        attribution: "GeoHistoricalData"
+		});
+
+		var cassini_hydro_l = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
+    	        layers: 'geohistoricaldata:france_cassini_hydro',
+   		format: 'image/png',
+    	        transparent: true,
+    	        attribution: "GeoHistoricalData"
+		});
+                
+		var cassini_hydro_s = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
+    	        layers: 'geohistoricaldata:france_cassini_surfaces_hydro',
+   		format: 'image/png',
+    	        transparent: true,
+    	        attribution: "GeoHistoricalData"
+		});
+
+		var cities = new L.LayerGroup();
+                
+	        L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
+		L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
+		L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
+		L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+                
+	        var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+		'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+		'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+                
+	        var grayscale   = L.tileLayer(mbUrl, {id: 'examples.map-20v6611k', attribution: mbAttr}),
+		streets  = L.tileLayer(mbUrl, {id: 'examples.map-i875mjb7',   attribution: mbAttr});
+                
+		//Layer IGN
+		var ignKey = "4g5kl87ch66khntp6v297m02";
+		var layerIGNCassini = "GEOGRAPHICALGRIDSYSTEMS.CASSINI";
+		var layerIGNEtatMajor10 = "GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10";
+		var layerIGNEtatMajor40 = "GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40";
+		var layerIGN = "GEOGRAPHICALGRIDSYSTEMS.MAPS";
+                
+		var url = "http://gpp3-wxs.ign.fr/" + ignKey + "/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities";
+                
+		var ign_cassini = new L.TileLayer.WMTS(url ,
+                {
+                layer: layerIGNCassini,
+                style: "normal",
+                tilematrixSet: "PM",
+                format: "image/jpeg",
+                attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
+                }
+                );
+                
+		var ign_cartes = new L.TileLayer.WMTS( url ,
+                {
+                layer: layerIGN,
+                style: "normal",
+                tilematrixSet: "PM",
+                format: "image/jpeg",
+                attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
+                }
+                );		
+                
+		var etat_major10 = new L.TileLayer.WMTS( url ,
+                {
+                layer: layerIGNEtatMajor10,
+                style: "normal",
+                tilematrixSet: "PM",
+                format: "image/jpeg",
+                attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
+                }
+                );
+                
+		var etat_major40 = new L.TileLayer.WMTS( url ,
+                {
+                layer: layerIGNEtatMajor40,
+                style: "normal",
+                tilematrixSet: "PM",
+                format: "image/jpeg",
+                attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
+                }
+                );		
+                
+		//layer delagrive
+		var delagrive = new L.TileLayer('http://mapwarper.net/layers/tile/257/{z}/{x}/{y}.png', {
+		minZoom: 2,
+		maxZoom: 14
+		});
+                
+		var map = L.map('map', {
+		center: [46.7,-1],
+		zoom: 6,
+		layers: [ign_cassini,cassini_grille,cassini_urbain,cassini_hydro_l,cassini_hydro_s,cassini_routes],
+		fullscreenControl: true,
+		fullscreenControlOptions: { // optional
+		title:"Show me the fullscreen !"
+		},
+		maxZoom: 14
+		});
+                
+		var baseLayers = {
+			//"Grayscale": grayscale,
+			"Carte de Cassini IGN": ign_cassini,
+			"Carte d'Etat-Major 40" : etat_major40,
+			"Carte d'Etat-Major 10" : etat_major10,
+			"OpenStreetMap": grayscale,
+			"Cartes IGN":ign_cartes
+		};
+
+		var overlays = {
+			"Tableau d'assemblage" : cassini_grille,
+			"Hydrographie linéaire" : cassini_hydro_l,
+			"Hydrographie surfacique" : cassini_hydro_s,			
+			"Tâches urbaines" : cassini_urbain,
+			"Routes": cassini_routes,			
+			//"Plan Delagrive": delagrive
+		};
+
+                var osmGeocoder = new L.Control.OSMGeocoder();
+
+		L.control.layers(baseLayers, overlays).addTo(map);
+		L.control.scale().addTo(map);
+		map.addControl(osmGeocoder);
+
+		// detect fullscreen toggling
+		map.on('enterFullscreen', function(){if(window.console) window.console.log('enterFullscreen');});
+		map.on('exitFullscreen', function(){if(window.console) window.console.log('exitFullscreen');});
+
+		//function opacity
+		function updateOpacity(value) {ign_cassini.setOpacity(value);}
+
+		//function checkbox
+		function LayerState(CheckboxName, layer){
+			var objCheckbox = document.getElementById(CheckboxName);
+			if (objCheckbox.checked) {map.addLayer(layer);}
+		        else {map.removeLayer(layer);}
+		}
+	</script>
+	<center><div id="footer"><p>Projet GeoHistoricalData</p></div></center>
 </body>
 </html>
