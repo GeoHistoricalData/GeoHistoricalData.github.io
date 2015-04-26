@@ -119,12 +119,18 @@
 
 	<script>
 		var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/gwc/service/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities";
+                var tms = "EPSG:4326";
+                var assemblage = "geohistoricaldata:france_cassini_table_assemblage";
+                var routes = "geohistoricaldata:france_cassini";
+                var surfaces = "geohistoricaldata:france_cassini_taches_urbaines";
+                var hydro_l = "geohistoricaldata:france_cassini_hydro";
+                var hydro_s = "geohistoricaldata:france_cassini_surfaces_hydro";
                 
 		var cassini_grille = new L.TileLayer.WMTS(geohistoricaldata_url ,
                 {
-                layer: "geohistoricaldata:france_cassini_table_assemblage",
+                layer: assemblage,
                 style: "normal",
-                tilematrixSet: "PM",
+                tilematrixSet: tms,
                 format: "image/jpeg",
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
                 }
@@ -139,40 +145,81 @@
 		});
                 -->
                 
-		var cassini_routes = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
+		var cassini_routes = new L.TileLayer.WMTS(geohistoricaldata_url ,
+                {
+                layer: routes,
+                style: "normal",
+                tilematrixSet: tms,
+                format: "image/jpeg",
+                attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+                }
+                );
+
+		<!--
+                var cassini_routes = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
     	        layers: 'geohistoricaldata:france_cassini',
    		format: 'image/png',
     	        transparent: true,
     	        attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 		});
+                -->
 
+		var cassini_surfaces = new L.TileLayer.WMTS(geohistoricaldata_url ,
+                {
+                layer:surfaces,
+                style: "normal",
+                tilematrixSet: tms,
+                format: "image/jpeg",
+                attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+                }
+                );
+
+                <!--
 		var cassini_urbain = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
     	        layers: 'geohistoricaldata:france_cassini_taches_urbaines',
    		format: 'image/png',
     	        transparent: true,
     	        attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 		});
+                -->
 
-		var cassini_hydro_l = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
+		var cassini_hydro_l = new L.TileLayer.WMTS(geohistoricaldata_url ,
+                {
+                layer: hydro_l,
+                style: "normal",
+                tilematrixSet: tms,
+                format: "image/jpeg",
+                attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+                }
+                );
+
+		<!--
+                var cassini_hydro_l = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
     	        layers: 'geohistoricaldata:france_cassini_hydro',
    		format: 'image/png',
     	        transparent: true,
     	        attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 		});
+                -->
                 
+		var cassini_hydro_s = new L.TileLayer.WMTS(geohistoricaldata_url ,
+                {
+                layer: hydro_s,
+                style: "normal",
+                tilematrixSet: tms,
+                format: "image/jpeg",
+                attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+                }
+                );
+
+                <!--
 		var cassini_hydro_s = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
     	        layers: 'geohistoricaldata:france_cassini_surfaces_hydro',
    		format: 'image/png',
     	        transparent: true,
     	        attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 		});
-
-		var cities = new L.LayerGroup();
-                
-	        L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
-		L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
-		L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
-		L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+                -->
                 
 	        var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 		'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
