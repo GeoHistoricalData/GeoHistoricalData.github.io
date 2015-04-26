@@ -118,12 +118,26 @@
 	<script src="Control.FullScreen.js"></script>
 
 	<script>
-		var cassini_grille = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
-    	        layers: 'geohistoricaldata:france_cassini_table_assemblage',
+		var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/gwc/service/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities";
+                
+		var cassini_grille = new L.TileLayer.WMTS(geohistoricaldata_url ,
+                {
+                layer: "geohistoricaldata:france_cassini_table_assemblage",
+                style: "normal",
+                tilematrixSet: "PM",
+                format: "image/jpeg",
+                attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+                }
+                );
+
+		<!--
+                var cassini_grille = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
+    	        layer: 'geohistoricaldata:france_cassini_table_assemblage',
    		format: 'image/png',
     	        transparent: true,
     	        attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 		});
+                -->
                 
 		var cassini_routes = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
     	        layers: 'geohistoricaldata:france_cassini',
