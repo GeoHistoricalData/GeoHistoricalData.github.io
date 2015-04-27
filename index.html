@@ -129,20 +129,12 @@
 		var cassini_grille = new L.TileLayer.WMTS(geohistoricaldata_url ,
                 {
                 layer: assemblage,
+                style: "",
                 tilematrixSet: tms,
                 format: "image/jpeg",
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
                 }
                 );
-
-		<!--
-                var cassini_grille = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
-    	        layer: 'geohistoricaldata:france_cassini_table_assemblage',
-   		format: 'image/png',
-    	        transparent: true,
-    	        attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
-		});
-                -->
                 
 		var cassini_routes = new L.TileLayer.WMTS(geohistoricaldata_url ,
                 {
@@ -154,15 +146,6 @@
                 }
                 );
 
-		<!--
-                var cassini_routes = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
-    	        layers: 'geohistoricaldata:france_cassini',
-   		format: 'image/png',
-    	        transparent: true,
-    	        attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
-		});
-                -->
-
 		var cassini_surfaces = new L.TileLayer.WMTS(geohistoricaldata_url ,
                 {
                 layer:surfaces,
@@ -172,15 +155,6 @@
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
                 }
                 );
-
-                <!--
-		var cassini_urbain = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
-    	        layers: 'geohistoricaldata:france_cassini_taches_urbaines',
-   		format: 'image/png',
-    	        transparent: true,
-    	        attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
-		});
-                -->
 
 		var cassini_hydro_l = new L.TileLayer.WMTS(geohistoricaldata_url ,
                 {
@@ -192,15 +166,6 @@
                 }
                 );
 
-		<!--
-                var cassini_hydro_l = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
-    	        layers: 'geohistoricaldata:france_cassini_hydro',
-   		format: 'image/png',
-    	        transparent: true,
-    	        attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
-		});
-                -->
-                
 		var cassini_hydro_s = new L.TileLayer.WMTS(geohistoricaldata_url ,
                 {
                 layer: hydro_s,
@@ -211,15 +176,6 @@
                 }
                 );
 
-                <!--
-		var cassini_hydro_s = L.tileLayer.wms("http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?", {
-    	        layers: 'geohistoricaldata:france_cassini_surfaces_hydro',
-   		format: 'image/png',
-    	        transparent: true,
-    	        attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
-		});
-                -->
-                
 	        var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 		'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 		'Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -233,6 +189,7 @@
 		var layerIGNCassini = "GEOGRAPHICALGRIDSYSTEMS.CASSINI";
 		var layerIGNEtatMajor10 = "GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10";
 		var layerIGNEtatMajor40 = "GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40";
+		var layerVerniquet = "geohistoricaldata:verniquet";
 		var layerIGN = "GEOGRAPHICALGRIDSYSTEMS.MAPS";
                 
 		var url = "http://gpp3-wxs.ign.fr/" + ignKey + "/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities";
@@ -276,7 +233,17 @@
                 attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
                 }
                 );		
-                
+
+		var verniquet = new L.TileLayer.WMTS(geohistoricaldata_url,
+                {
+                layer: layerVerniquet,
+                style: "normal",
+                tilematrixSet: tms,
+                format: "image/jpeg",
+                attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+                }
+                );	
+
 		//layer delagrive
 		var delagrive = new L.TileLayer('http://mapwarper.net/layers/tile/257/{z}/{x}/{y}.png', {
 		minZoom: 2,
@@ -299,6 +266,7 @@
 			"Carte de Cassini IGN": ign_cassini,
 			"Carte d'Etat-Major 40" : etat_major40,
 			"Carte d'Etat-Major 10" : etat_major10,
+			"Atlas de Verniquet" : verniquet,
 			"OpenStreetMap": grayscale,
 			"Cartes IGN":ign_cartes
 		};
