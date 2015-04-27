@@ -129,7 +129,7 @@
 		var cassini_grille = new L.TileLayer.WMTS(geohistoricaldata_url ,
                 {
                 layer: assemblage,
-                style: "",
+                style: "normal",
                 tilematrixSet: tms,
                 format: "image/jpeg",
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
@@ -176,13 +176,13 @@
                 }
                 );
 
-                <!--
 	        var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 		'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 		'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
                 
 	        var grayscale   = L.tileLayer(mbUrl, {id: 'examples.map-20v6611k', attribution: mbAttr}),
+                <!--
 		streets  = L.tileLayer(mbUrl, {id: 'examples.map-i875mjb7',   attribution: mbAttr});
                 -->
 
@@ -239,7 +239,7 @@
 		var verniquet = new L.TileLayer.WMTS(geohistoricaldata_url,
                 {
                 layer: layerVerniquet,
-                style: "",
+                style: "normal",
                 tilematrixSet: tms,
                 format: "image/jpeg",
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
