@@ -119,6 +119,7 @@
 
 	<script>
 		var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?&TILED=true";
+                var formatString = 'image/png';
                 var assemblage = 'geohistoricaldata:france_cassini_table_assemblage';
                 var routes = 'geohistoricaldata:france_cassini';
                 var surfaces = 'geohistoricaldata:france_cassini_taches_urbaines';
@@ -128,44 +129,43 @@
                 
 		var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
                 layers: assemblage,
-                format: 'image/png',
+                format: formatString,
                 transparent: true,
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
                 });
                 
 		var cassini_routes = L.tileLayer.wms(geohistoricaldata_url, {
                 layers: routes,
-                format: 'image/png',
+                format: formatString,
                 transparent: true,
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
                 });
 
 		var cassini_surfaces = L.tileLayer.wms(geohistoricaldata_url, {
                 layers: surfaces,
-                format: 'image/png',
+                format: formatString,
                 transparent: true,
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
                 });
 
 		var cassini_hydro_l = L.tileLayer.wms(geohistoricaldata_url, {
                 layers: hydro_l,
-                format: 'image/png',
+                format: formatString,
                 transparent: true,
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
                 });
 
 		var cassini_hydro_s = L.tileLayer.wms(geohistoricaldata_url, {
                 layers: hydro_s,
-                format: 'image/png',
+                format: formatString,
                 transparent: true,
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
                 });
 
 		var verniquet = L.tileLayer.wms(geohistoricaldata_url, {
                 layers: layerVerniquet,
-                format: 'image/png',
+                format: formatString,
                 transparent: false,
-                version: '1.3.0',
                 attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
                 });	
 
@@ -228,7 +228,7 @@
 		//layer delagrive
 		var delagrive = new L.TileLayer('http://mapwarper.net/layers/tile/257/{z}/{x}/{y}.png', {
 		minZoom: 2,
-		maxZoom: 14
+		maxZoom: 18
 		});
                 
 		var map = L.map('map', {
@@ -239,7 +239,7 @@
 		fullscreenControlOptions: { // optional
 		title:"Show me the fullscreen !"
 		},
-		maxZoom: 16
+		maxZoom: 18
 		});
                 
 		var baseLayers = {
@@ -247,6 +247,7 @@
 			"Carte d'Etat-Major 40" : etat_major40,
 			"Carte d'Etat-Major 10" : etat_major10,
 			"Atlas de Verniquet" : verniquet,
+                        "Plan Delagrive" : delagrive,
 			"OpenStreetMap": grayscale,
 			"Cartes IGN":ign_cartes
 		};
