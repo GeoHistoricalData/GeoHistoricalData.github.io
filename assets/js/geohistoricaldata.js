@@ -163,7 +163,8 @@ var map = L.map('map', {
     fullscreenControlOptions: { // optional
         title:"Show me the fullscreen !"
     },
-    maxZoom: 18
+    maxZoom: 18,
+    attributionControl: false
 });
 
 var baseLayers = {
@@ -235,6 +236,16 @@ function updateAttribution(e) {
 }
 map.on("layeradd", updateAttribution);
 map.on("layerremove", updateAttribution);
+
+var attributionControl = L.control({
+  position: "bottomright"
+});
+attributionControl.onAdd = function (map) {
+  var div = L.DomUtil.create("div", "leaflet-control-attribution");
+  div.innerHTML = "<a href='#' onclick='$(\"#attributionModal\").modal(\"show\"); return false;'>Attribution</a>";
+  return div;
+};
+map.addControl(attributionControl);
 
 // Leaflet patch to make layer control scrollable on touch browsers
 var container = $(".leaflet-control-layers")[0];
