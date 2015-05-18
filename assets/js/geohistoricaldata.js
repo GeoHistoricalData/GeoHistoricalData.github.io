@@ -1,3 +1,47 @@
+$(window).resize(function() {
+  sizeLayerControl();
+});
+
+$("#about-btn").click(function() {
+  $("#aboutModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#full-extent-btn").click(function() {
+  map.fitBounds(boroughs.getBounds());
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#legend-btn").click(function() {
+  $("#legendModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#login-btn").click(function() {
+  $("#loginModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#nav-btn").click(function() {
+  $(".navbar-collapse").collapse("toggle");
+  return false;
+});
+
+function sizeLayerControl() {
+  $(".leaflet-control-layers").css("max-height", $("#map").height() - 50);
+}
+
+/* Larger screens get expanded layer control and visible sidebar */
+if (document.body.clientWidth <= 767) {
+  var isCollapsed = true;
+} else {
+  var isCollapsed = false;
+}
+
 var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/cassini/wms?&TILED=true";
 var formatString = 'image/png';
 var assemblage = 'cassini:france_cassini_table_assemblage';
@@ -144,7 +188,26 @@ var overlays = {
 
 var osmGeocoder = new L.Control.OSMGeocoder();
 
-L.control.layers(baseLayers, overlays).addTo(map);
+var groupedOverlays = {
+	"Structure": {
+		"Tableau d'assemblage" : cassini_grille
+	},
+	"Roads and land use": {
+   	"Roads": cassini_routes,
+   	"Land use" : cassini_surfaces
+	},
+	"Hydrography": {
+   	"Linear" : cassini_hydro_l,
+   	"Areal" : cassini_hydro_s			
+	}
+};
+
+var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, {
+	collapsed: isCollapsed
+}).addTo(map);
+
+//L.control.layers(baseLayers, overlays).addTo(map);
+
 L.control.scale().addTo(map);
 map.addControl(osmGeocoder);
 
@@ -160,4 +223,25 @@ function LayerState(CheckboxName, layer){
     var objCheckbox = document.getElementById(CheckboxName);
     if (objCheckbox.checked) {map.addLayer(layer);}
     else {map.removeLayer(layer);}
+}
+
+/* Attribution control */
+function updateAttribution(e) {
+  $.each(map._layers, function(index, layer) {
+    if (layer.getAttribution) {
+      $("#attribution").html((layer.getAttribution()));
+    }
+  });
+}
+map.on("layeradd", updateAttribution);
+map.on("layerremove", updateAttribution);
+
+// Leaflet patch to make layer control scrollable on touch browsers
+var container = $(".leaflet-control-layers")[0];
+if (!L.Browser.touch) {
+  L.DomEvent
+  .disableClickPropagation(container)
+  .disableScrollPropagation(container);
+} else {
+  L.DomEvent.disableClickPropagation(container);
 }
