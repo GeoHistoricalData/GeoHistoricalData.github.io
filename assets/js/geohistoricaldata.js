@@ -250,9 +250,9 @@ function downloadLayer(typeName) {
 	var url = 'http://www.geohistoricaldata.org/geoserver/wfs';
    var namespace = 'cassini';
 	var postData = 
-		'<wfs:GetFeature service="WFS" version="2.0.0"'+
-	   'xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:fes="http://www.opengis.net/fes/2.0"'+
-    	'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'+
+		'<wfs:GetFeature service="WFS" version="2.0.0" '+
+	   'xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:fes="http://www.opengis.net/fes/2.0" '+
+    	'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '+
     	'xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd" outputFormat="shape-zip">'+
     	'<wfs:Query typeNames="' + namespace + ':' + typeName + '">'+
     	'</wfs:Query>'+
