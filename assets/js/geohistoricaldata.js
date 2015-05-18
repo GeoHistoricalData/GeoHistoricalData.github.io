@@ -1,11 +1,11 @@
-var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?&TILED=true";
+var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/cassini/wms?&TILED=true";
 var formatString = 'image/png';
-var assemblage = 'geohistoricaldata:france_cassini_table_assemblage';
-var routes = 'geohistoricaldata:france_cassini';
-var surfaces = 'geohistoricaldata:france_cassini_taches_urbaines';
-var hydro_l = 'geohistoricaldata:france_cassini_hydro';
-var hydro_s = 'geohistoricaldata:france_cassini_surfaces_hydro';
-var layerVerniquet = 'geohistoricaldata:verniquet';
+var assemblage = 'cassini:france_cassini_table_assemblage';
+var routes = 'cassini:france_cassini';
+var surfaces = 'cassini:france_cassini_taches_urbaines';
+var hydro_l = 'cassini:france_cassini_hydro';
+var hydro_s = 'cassini:france_cassini_surfaces_hydro';
+var layerVerniquet = 'cassini:verniquet';
 
 var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
     layers: assemblage,
