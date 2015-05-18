@@ -245,31 +245,25 @@ if (!L.Browser.touch) {
 } else {
   L.DomEvent.disableClickPropagation(container);
 }
-
-// create the Lambert 93 (EPSG:2154) CRS
-var crs = new L.Proj.CRS('EPSG:2154', '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',{});
-
-L.Format.ShapeZip = L.Format.extend({
-    initialize: function (options) {
-        L.Format.prototype.initialize.call(this, options);
-        this.outputFormat = 'shape-zip';
-    },
-    responseToLayers: function (options) {
-        options = options || {};
-        var layers = [];
-        return layers;
-    }
-});
-var shapeZip = new L.Format.ShapeZip();
  
 function downloadLayer(typeName) {
-	// create a wfs
-	var wfs = new L.WFS({
-         url: 'http://www.geohistoricaldata.org/geoserver/ows',
-         typeNS: 'cassini',
-         typeName: typeName,
-         geometryField: 'geom',
-         crs: crs
-      }, shapeZip);
-	wfs.getFeature();
+	var url = 'http://www.geohistoricaldata.org/geoserver/wfs';
+   var namespace = 'cassini';
+	var postData = 
+		'<wfs:GetFeature service="WFS" version="2.0.0"'+
+	   'xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:fes="http://www.opengis.net/fes/2.0"'+
+    	'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'+
+    	'xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd" outputFormat="shape-zip">'+
+    	'<wfs:Query typeNames="' + namespace + ':' + typeName + '">'+
+    	'</wfs:Query>'+
+		'</wfs:GetFeature>';
+	$.ajax({
+		type: "POST",
+		url: url,
+		dataType: "xml",
+		contentType: "text/xml",
+		data: postData,
+		success: function(xml) {	
+		}
+	});
 }
