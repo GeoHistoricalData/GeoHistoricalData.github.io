@@ -6,15 +6,20 @@
       <se:Name>france_cassini_hydro</se:Name>
       <se:FeatureTypeStyle>
         <se:Rule>
-          <se:Name>Single symbol</se:Name>
+          <se:MinScaleDenominator>1</se:MinScaleDenominator>
+          <se:MaxScaleDenominator>100000</se:MaxScaleDenominator>
           <se:LineSymbolizer>
             <se:Stroke>
               <se:SvgParameter name="stroke">#616191</se:SvgParameter>
-              <se:SvgParameter name="stroke-width">0.75</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1.0</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
             </se:Stroke>
           </se:LineSymbolizer>
+        </se:Rule>
+      </se:FeatureTypeStyle>
+      <se:FeatureTypeStyle>
+        <se:Rule>
           <se:LineSymbolizer>
             <se:Stroke>
               <se:SvgParameter name="stroke">#aaaaff</se:SvgParameter>
