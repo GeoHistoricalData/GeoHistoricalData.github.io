@@ -104,6 +104,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                	<li><a href="#" onClick="downloadLayer('france_cassini_surfaces_hydro')" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Hydrographic Surfaces</a></li>
                   <!--
                   <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Boroughs</a></li>
                   <li><a href="data/subways.geojson" download="subways.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Subway Lines</a></li>
@@ -370,6 +371,9 @@
     <script src="https://rawgithub.com/mylen/leaflet.TileLayer.WMTS/master/leaflet-tilelayer-wmts.js"></script>
     <script src="https://github.com/brunob/leaflet.fullscreen/Control.FullScreen.js"></script>
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.6/proj4.js"></script>
+    <script src="https://rawgit.com/kartena/Proj4Leaflet/master/src/proj4leaflet.js"></script>
+    <script src="http://flexberry.github.io/Leaflet-WFST/dist/Leaflet-WFST.src.js"></script>
     <script src="assets/js/geohistoricaldata.js"></script>
   </body>
 </html>

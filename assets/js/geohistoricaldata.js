@@ -245,3 +245,26 @@ if (!L.Browser.touch) {
 } else {
   L.DomEvent.disableClickPropagation(container);
 }
+
+// create the Lambert 93 (EPSG:2154) CRS
+var crs = new L.Proj.CRS('EPSG:2154', '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',{});
+
+L.Format.ShapeZip = L.Format.extend({
+    initialize: function (options) {
+        L.Format.prototype.initialize.call(this, options);
+        this.outputFormat = 'shape-zip';
+    },
+});
+var shapeZip = new L.Format.ShapeZip();
+ 
+function downloadLayer(typeName) {
+	// create a wfs
+	var wfs = new L.WFS({
+         url: 'http://www.geohistoricaldata.org/geoserver/ows',
+         typeNS: 'cassini',
+         typeName: typeName,
+         geometryField: 'geom',
+         crs: crs
+      }, shapeZip);
+	wfs.getFeature();
+}
