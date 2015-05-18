@@ -254,6 +254,11 @@ L.Format.ShapeZip = L.Format.extend({
         L.Format.prototype.initialize.call(this, options);
         this.outputFormat = 'shape-zip';
     },
+    responseToLayers: function (options) {
+        options = options || {};
+        var layers = [];
+        return layers;
+    }
 });
 var shapeZip = new L.Format.ShapeZip();
  
