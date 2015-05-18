@@ -95,14 +95,14 @@
 	<div id="legend" style="display:none;">
 	<h2>Legend</h2>
 	<h3>Tableau d'assemblage</h3>
-        <img src="http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geohistoricaldata:france_cassini_table_assemblage" width="10"/>	
+        <img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_table_assemblage" width="10"/>	
 	<h3>Voies</h3>
-	<img src="http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geohistoricaldata:france_cassini" width="75"/>
+	<img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini" width="75"/>
 	<h3>Surfaces</h3>
-	<img src="http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geohistoricaldata:france_cassini_taches_urbaines" width="75"/>
+	<img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_taches_urbaines" width="75"/>
 	<h3>Hydrographie linéaire et surfacique</h3>
-	<img src="http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geohistoricaldata:france_cassini_hydro" width="10" /><br>
-	<img src="http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geohistoricaldata:france_cassini_surfaces_hydro" width="10"/>
+	<img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_hydro" width="10" /><br>
+	<img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_surfaces_hydro" width="10"/>
 	<!-- fin legend -->
 	<!-- slider opacity -->
 	<h2>Cassini layer opacity</h2>
@@ -118,10 +118,10 @@
 	<script src="https://github.com/brunob/leaflet.fullscreen/Control.FullScreen.js"></script>
 
 	<script>
-		var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/geohistoricaldata/wms?&TILED=true";
+		var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/cassini/wms?&TILED=true";
                 var formatString = 'image/png';
                 var assemblage = 'geohistoricaldata:france_cassini_table_assemblage';
-                var routes = 'geohistoricaldata:france_cassini';
+                var routes = 'cassini:france_cassini';
                 var surfaces = 'geohistoricaldata:france_cassini_taches_urbaines';
                 var hydro_l = 'geohistoricaldata:france_cassini_hydro';
                 var hydro_s = 'geohistoricaldata:france_cassini_surfaces_hydro';
