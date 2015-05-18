@@ -115,7 +115,7 @@ var ign_cassini = new L.TileLayer.WMTS(url ,
                                            style: "normal",
                                            tilematrixSet: "PM",
                                            format: "image/jpeg",
-                                           attribution: "<a href='http://www.ign.fr'>IGN</a>"
+                                           attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>"
                                        }
                                       );
 
@@ -125,7 +125,7 @@ var ign_cartes = new L.TileLayer.WMTS( url ,
                                            style: "normal",
                                            tilematrixSet: "PM",
                                            format: "image/jpeg",
-                                           attribution: "<a href='http://www.ign.fr'>IGN</a>"
+                                           attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>"
                                        }
                                      );		
 
@@ -135,7 +135,7 @@ var etat_major10 = new L.TileLayer.WMTS( url ,
                                              style: "normal",
                                              tilematrixSet: "PM",
                                              format: "image/jpeg",
-                                             attribution: "<a href='http://www.ign.fr'>IGN</a>"
+                                             attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>"
                                          }
                                        );
 
@@ -145,7 +145,7 @@ var etat_major40 = new L.TileLayer.WMTS( url ,
                                              style: "normal",
                                              tilematrixSet: "PM",
                                              format: "image/jpeg",
-                                             attribution: "<a href='http://www.ign.fr'>IGN</a>"
+                                             attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>"
                                          }
                                        );		
 
@@ -218,7 +218,7 @@ var groupedOverlays = {
    	"Linear" : cassini_hydro_l,
    	"Areal" : cassini_hydro_s			
 	},
-		"Roads and land use": {
+	"Roads and land use": {
    	"Land use" : cassini_surfaces,
    	"Roads": cassini_routes
 	}
