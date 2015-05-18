@@ -1,0 +1,50 @@
+html, body {height: 98%;}	
+#map { width: 100%; height: 95% }
+.leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); }
+/* on selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
+#map:-webkit-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
+#map:-moz-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
+#map:full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
+.leaflet-pseudo-fullscreen { position: fixed !important; width: 100% !important; height: 100% !important; top: 0px !important; left: 0px !important; z-index: 99999; }
+
+h3{margin-bottom: 7px;font-size: 15px}
+h2 {margin-bottom: 7px;font-size: 16px}
+h1 {margin-top: -15px;font-size: 18px;color:#000;opacity:1;}
+p {font-size: 12px}
+.fixed {
+    position: fixed;
+    top: 0;
+    right: 50px;
+    width: 250px;
+    background-color: white;
+}
+#box
+{  
+    /*width:250px;
+      height:600px; */
+    position : fixed;
+    top : 10px;
+    left : 10px;
+    background-color: white;
+    opacity:0.8;
+    border:1px dotted black;
+    margin:20px;
+    padding:15px;
+    display:block;
+    overflow: auto}
+
+#titre
+{
+    background-color: #ccc;
+    opacity: 0.5;
+    padding:15px;
+    margin-top: -15px
+}
+
+#footer
+{
+    background-color: #EFECCA;
+    opacity: 0.5;
+    padding:5px;
+    margin: 5px;
+}
