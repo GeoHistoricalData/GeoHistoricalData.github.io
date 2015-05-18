@@ -55,7 +55,7 @@ var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
     layers: assemblage,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='http://www.foretsanciennes.fr'>WWF/INRA</a> and <a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var cassini_routes = L.tileLayer.wms(geohistoricaldata_url, {
@@ -115,7 +115,7 @@ var ign_cassini = new L.TileLayer.WMTS(url ,
                                            style: "normal",
                                            tilematrixSet: "PM",
                                            format: "image/jpeg",
-                                           attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
+                                           attribution: "<a href='http://www.ign.fr'>IGN</a>"
                                        }
                                       );
 
@@ -125,7 +125,7 @@ var ign_cartes = new L.TileLayer.WMTS( url ,
                                            style: "normal",
                                            tilematrixSet: "PM",
                                            format: "image/jpeg",
-                                           attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
+                                           attribution: "<a href='http://www.ign.fr'>IGN</a>"
                                        }
                                      );		
 
@@ -135,7 +135,7 @@ var etat_major10 = new L.TileLayer.WMTS( url ,
                                              style: "normal",
                                              tilematrixSet: "PM",
                                              format: "image/jpeg",
-                                             attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
+                                             attribution: "<a href='http://www.ign.fr'>IGN</a>"
                                          }
                                        );
 
@@ -145,7 +145,7 @@ var etat_major40 = new L.TileLayer.WMTS( url ,
                                              style: "normal",
                                              tilematrixSet: "PM",
                                              format: "image/jpeg",
-                                             attribution: "<a href='https://github.com/mylen/leaflet.TileLayer.WMTS'>GitHub</a>&copy; <a href='http://www.ign.fr'>IGN</a>"
+                                             attribution: "<a href='http://www.ign.fr'>IGN</a>"
                                          }
                                        );		
 
@@ -166,6 +166,27 @@ var map = L.map('map', {
     maxZoom: 18,
     attributionControl: false
 });
+
+/* Attribution control */
+function updateAttribution(e) {
+  $.each(map._layers, function(index, layer) {
+    if (layer.getAttribution) {
+      $("#attribution").html((layer.getAttribution()));
+    }
+  });
+}
+map.on("layeradd", updateAttribution);
+map.on("layerremove", updateAttribution);
+
+var attributionControl = L.control({
+  position: "bottomright"
+});
+attributionControl.onAdd = function (map) {
+  var div = L.DomUtil.create("div", "leaflet-control-attribution");
+  div.innerHTML = "<a href='#' onclick='$(\"#attributionModal\").modal(\"show\"); return false;'>Attribution</a>";
+  return div;
+};
+map.addControl(attributionControl);
 
 var baseLayers = {
     "Carte de Cassini IGN": ign_cassini,
@@ -193,13 +214,13 @@ var groupedOverlays = {
 	"Structure": {
 		"Tableau d'assemblage" : cassini_grille
 	},
-	"Roads and land use": {
-   	"Roads": cassini_routes,
-   	"Land use" : cassini_surfaces
-	},
 	"Hydrography": {
    	"Linear" : cassini_hydro_l,
    	"Areal" : cassini_hydro_s			
+	},
+		"Roads and land use": {
+   	"Land use" : cassini_surfaces,
+   	"Roads": cassini_routes
 	}
 };
 
@@ -225,27 +246,6 @@ function LayerState(CheckboxName, layer){
     if (objCheckbox.checked) {map.addLayer(layer);}
     else {map.removeLayer(layer);}
 }
-
-/* Attribution control */
-function updateAttribution(e) {
-  $.each(map._layers, function(index, layer) {
-    if (layer.getAttribution) {
-      $("#attribution").html((layer.getAttribution()));
-    }
-  });
-}
-map.on("layeradd", updateAttribution);
-map.on("layerremove", updateAttribution);
-
-var attributionControl = L.control({
-  position: "bottomright"
-});
-attributionControl.onAdd = function (map) {
-  var div = L.DomUtil.create("div", "leaflet-control-attribution");
-  div.innerHTML = "<a href='#' onclick='$(\"#attributionModal\").modal(\"show\"); return false;'>Attribution</a>";
-  return div;
-};
-map.addControl(attributionControl);
 
 // Leaflet patch to make layer control scrollable on touch browsers
 var container = $(".leaflet-control-layers")[0];

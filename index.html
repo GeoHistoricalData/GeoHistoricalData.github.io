@@ -19,28 +19,7 @@
     <link rel="stylesheet" href="assets/css/geohistoricaldata.css"/>
 
     <link rel="icon" sizes="196x196" href="assets/img/favicon-196.png"/>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
-    
-    <!--
-    <script type="text/javascript">
-      function toggle_visibility(id) {
-      var e = document.getElementById(id);
-      e.style.display = ((e.style.display!='none') ? 'none' : 'block');
-    }
-    function changeImage() {
-      //url en absolu
-      //alert(document.getElementById("toggle_icon").src);
-      if (document.getElementById("toggle_icon").src == "http://geohistoricaldata.org/icon_fleche_bas.png") 
-      {   
-        document.getElementById("toggle_icon").src = "http://geohistoricaldata.org/icon_fleche_haut.png";
-      }
-      else 
-      {
-        document.getElementById("toggle_icon").src = "http://geohistoricaldata.org/icon_fleche_bas.png";
-      }
-    }
-    </script>
-    -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>    
   </head>
   <body>
     <!--
@@ -182,29 +161,31 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <!--
-                  <li><a href="#boroughs-tab" data-toggle="tab">Boroughs</a></li>
-                  <li><a href="#subway-lines-tab" data-toggle="tab">Subway Lines</a></li>
-                  <li><a href="#theaters-tab" data-toggle="tab">Theaters</a></li>
-                  <li><a href="#museums-tab" data-toggle="tab">Museums</a></li>
-                  -->
+                  <li><a href="#sheets-tab" data-toggle="tab">Sheets</a></li>
+                  <li><a href="#land-use-tab" data-toggle="tab">Land Use</a></li>
+                  <li><a href="#roads-tab" data-toggle="tab">Roads</a></li>
+                  <li><a href="#linear-hydrography-tab" data-toggle="tab">Linear Hydrography</a></li>
+                  <li><a href="#areal-hydrography-tab" data-toggle="tab">Areal Hydrography</a></li>
                 </ul>
               </li>
             </ul>
             <div class="tab-content" id="aboutTabsContent">
               <div class="tab-pane fade active in" id="about">
-                <p>Our group gathers about twenty researchers around a project with two fundamental and distinct goals that we believe important to keep connected in order to:
-                  <ul>
-                    <li>study territorial evolutions at different scales or levels (from the cadastral parcel to the national territory),</li>
-                    <li>build tools to accurately and flexibly answer such questions.</li>
+              	 <div class="panel panel-primary">
+                  <div class="panel-heading">Our group gathers about twenty researchers around a project with two fundamental and distinct goals that we believe important to keep connected in order to:</div>
+                  <ul class="list-group">
+                    <li class="list-group-item">study territorial evolutions at different scales or levels (from the cadastral parcel to the national territory),</li>
+                    <li class="list-group-item">build tools to accurately and flexibly answer such questions.</li>
                   </ul>
-                </p>
+                </div>
                 <p>
                   For these reasons, we started a large project to collaboratively digitize several maps of the city of Paris and of France from the 18th century to the 20th century.
                   The digitization of historical sources is usually done locally by researchers for the immediate needs of their research without sharing their work and results with others.
                   We believe it is essential to build a shared platform not only to work together but also to have a collective control over the production process of the data, their transformations and their analysis.
                   Operations such as scanning, georeferencing and digitization of historical sources imply several and delicate choices.
                   These choices should be documentated and tracked.
+                </p>
+                <p>
                   Reducing the deformations of historical sources during georeferencing usually implies geometric displacements between consecutive maps.
                   Our approach consists in taking theses displacements into account after the digitization process using data conflation / matching tools.
                   Such tools should allow researchers to control and take into account the imperfections of the data throughout their analysis.
@@ -254,20 +235,22 @@
                   </div>
                 </form>
               </div>
-              <!--
-              <div class="tab-pane fade" id="boroughs-tab">
-                <p>Borough data courtesy of <a href="http://www.nyc.gov/html/dcp/html/bytes/meta_dis_nyboroughwi.shtml" target="_blank">New York City Department of City Planning</a></p>
+              <div class="tab-pane fade" id="sheets-tab">
+                <p>Initial Sheet data courtesy of WWF/INRA, see <a href="http://www.foretsanciennes.fr/wp-content/uploads/Vallauri_et_al_2012.pdf">Valauri et al. 2012</a>.</p>
+                <p>The data present here have been modified by the GeoHistoricalData projet.</p>
               </div>
-              <div class="tab-pane fade" id="subway-lines-tab">
-                <p><a href="http://spatialityblog.com/2010/07/08/mta-gis-data-update/#datalinks" target="_blank">MTA Subway data</a> courtesy of the <a href="http://www.urbanresearch.org/about/cur-components/cuny-mapping-service" target="_blank">CUNY Mapping Service at the Center for Urban Research</a></p>
+              <div class="tab-pane fade" id="land-use-tab">
+                <p>Land Use data (cities, domains, etc.) have be entirely digitized by the GeoHistoricalData projet.</p>
               </div>
-              <div class="tab-pane fade" id="theaters-tab">
-                <p>Theater data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Theaters/kdu2-865w" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
+              <div class="tab-pane fade" id="roads-tab">
+                <p>Road data (main, secondary and forest roads, paths, bridges, ferries, etc) have be entirely digitized by the GeoHistoricalData projet.</p>
               </div>
-              <div class="tab-pane fade" id="museums-tab">
-                <p>Museum data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Museums-and-Galleries/sat5-adpb" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
+              <div class="tab-pane fade" id="linear-hydrography-tab">
+                <p>Linear Hydrography data have be entirely digitized by the GeoHistoricalData projet.</p>
               </div>
-              -->
+              <div class="tab-pane fade" id="areal-hydrography-tab">
+                <p>Areal Hydrography data (rivers, lakes, ponds, etc.) have be entirely digitized by the GeoHistoricalData projet.</p>
+              </div>
             </div>
           </div>
           <div class="modal-footer">
@@ -286,14 +269,15 @@
           </div>
           <div class="modal-body">
             <h5>Tableau d'assemblage</h5>
-            <img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_table_assemblage" width="10"/>	
+            <img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_table_assemblage" width="75"/>	
             <h5>Voies</h5>
             <img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini&scale=1000000" width="75"/>
             <h5>Surfaces</h5>
             <img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_taches_urbaines" width="75"/>
-            <h5>Hydrographie linéaire et surfacique</h5>
-            <img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_hydro&scale=1000000" width="10" /><br>
-            <img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_surfaces_hydro" width="10"/>
+            <h5>Hydrographie linéaire</h5>
+            <img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_hydro&scale=1000000" width="75" />
+            <h5>Hydrographie surfacique</h5>
+            <img src="http://geohistoricaldata.org/geoserver/cassini/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=cassini:france_cassini_surfaces_hydro" width="75"/>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
