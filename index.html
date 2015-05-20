@@ -294,7 +294,7 @@
             <h4 class="modal-title">Login</h4>
           </div>
           <div class="modal-body">
-            <form id="contact-form">
+            <form id="login-form" action="http://www.geohistoricaldata.org/geoserver/j_spring_security_check" method="post">
               <fieldset>
                 <div class="form-group">
                   <label for="name">Username:</label>
@@ -309,7 +309,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick='submitLoginForm()'>Login</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

@@ -256,3 +256,8 @@ if (!L.Browser.touch) {
 } else {
   L.DomEvent.disableClickPropagation(container);
 }
+
+function submitLoginForm()
+{
+    document.forms["login-form"].submit();
+}
