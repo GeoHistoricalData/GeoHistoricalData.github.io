@@ -259,5 +259,5 @@ if (!L.Browser.touch) {
 
 function submitLoginForm()
 {
-    document.forms["login-form"].submit();
+   document.forms["login-form"].submit();
 }
