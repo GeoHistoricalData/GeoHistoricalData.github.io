@@ -36,7 +36,7 @@ function sizeLayerControl() {
 }
 
 /* Larger screens get expanded layer control and visible sidebar */
-if (document.body.clientWidth <= 767) {
+if (document.body.clientWidth < 800) {
   var isCollapsed = true;
 } else {
   var isCollapsed = false;
