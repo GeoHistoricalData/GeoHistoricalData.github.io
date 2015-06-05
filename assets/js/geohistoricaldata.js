@@ -50,6 +50,7 @@ var surfaces = 'cassini:france_cassini_taches_urbaines';
 var hydro_l = 'cassini:france_cassini_hydro';
 var hydro_s = 'cassini:france_cassini_surfaces_hydro';
 var layerVerniquet = 'cassini:verniquet';
+var layerCritiqueCassini1 = 'cassini:cs000001_georef_l93';
 
 var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
     layers: assemblage,
@@ -91,7 +92,14 @@ var verniquet = L.tileLayer.wms(geohistoricaldata_url, {
     format: formatString,
     transparent: false,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
-});	
+});
+
+var critiquecassini1 = L.tileLayer.wms(geohistoricaldata_url, {
+    layers: layerCritiqueCassini1,
+    format: formatString,
+    transparent: false,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
 
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
     '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -195,7 +203,8 @@ var baseLayers = {
     "Atlas de Verniquet" : verniquet,
     "Plan Delagrive" : delagrive,
     "OpenStreetMap": grayscale,
-    "Cartes IGN":ign_cartes
+    "Cartes IGN":ign_cartes,
+    "Cassini : Planches du Congrès":critiquecassini1
 };
 
 var overlays = {
