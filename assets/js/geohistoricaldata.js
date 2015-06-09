@@ -43,6 +43,7 @@ if (document.body.clientWidth < 800) {
 }
 
 var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/cassini/wms?&TILED=true";
+var geohistoricaldata_paris_url = "http://geohistoricaldata.org/geoserver/paris/wms?&TILED=true";
 var formatString = 'image/png';
 var assemblage = 'cassini:france_cassini_table_assemblage';
 var routes = 'cassini:france_cassini';
@@ -87,7 +88,7 @@ var cassini_hydro_s = L.tileLayer.wms(geohistoricaldata_url, {
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
-var verniquet = L.tileLayer.wms(geohistoricaldata_url, {
+var verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerVerniquet,
     format: formatString,
     transparent: false,
