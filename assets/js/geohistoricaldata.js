@@ -49,7 +49,7 @@ var routes = 'cassini:france_cassini';
 var surfaces = 'cassini:france_cassini_taches_urbaines';
 var hydro_l = 'cassini:france_cassini_hydro';
 var hydro_s = 'cassini:france_cassini_surfaces_hydro';
-var layerVerniquet = 'cassini:verniquet';
+var layerVerniquet = 'paris:verniquet';
 var layerCritiqueCassini1 = 'cassini:cs000001_georef_l93';
 
 var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
