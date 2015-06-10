@@ -51,6 +51,7 @@ var surfaces = 'cassini:france_cassini_taches_urbaines';
 var hydro_l = 'cassini:france_cassini_hydro';
 var hydro_s = 'cassini:france_cassini_surfaces_hydro';
 var layerVerniquet = 'paris:verniquet';
+var layerJacoubet = 'paris:jacoubet';
 var layerCritiqueCassini1 = 'cassini:cs000001_georef_l93';
 
 var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
@@ -90,6 +91,13 @@ var cassini_hydro_s = L.tileLayer.wms(geohistoricaldata_url, {
 
 var verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerVerniquet,
+    format: formatString,
+    transparent: false,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var jacoubet = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerJacoubet,
     format: formatString,
     transparent: false,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
@@ -202,6 +210,7 @@ var baseLayers = {
     "Carte d'Etat-Major 40" : etat_major40,
     "Carte d'Etat-Major 10" : etat_major10,
     "Atlas de Verniquet" : verniquet,
+    "Atlas de Jacoubet" : jacoubet,
     "Plan Delagrive" : delagrive,
     "OpenStreetMap": grayscale,
     "Cartes IGN":ign_cartes,
