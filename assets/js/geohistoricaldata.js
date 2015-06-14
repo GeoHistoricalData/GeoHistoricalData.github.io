@@ -50,6 +50,7 @@ var routes = 'cassini:france_cassini';
 var surfaces = 'cassini:france_cassini_taches_urbaines';
 var hydro_l = 'cassini:france_cassini_hydro';
 var hydro_s = 'cassini:france_cassini_surfaces_hydro';
+var toponyms = 'cassini:france_cassini_toponyms';
 var layerVerniquet = 'paris:verniquet';
 var layerJacoubet = 'paris:jacoubet';
 var layerCritiqueCassini1 = 'cassini:cs000001_georef_l93';
@@ -84,6 +85,13 @@ var cassini_hydro_l = L.tileLayer.wms(geohistoricaldata_url, {
 
 var cassini_hydro_s = L.tileLayer.wms(geohistoricaldata_url, {
     layers: hydro_s,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var cassini_toponyms = L.tileLayer.wms(geohistoricaldata_url, {
+    layers: toponyms,
     format: formatString,
     transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
@@ -222,7 +230,8 @@ var overlays = {
     "Hydrographie linéaire" : cassini_hydro_l,
     "Hydrographie surfacique" : cassini_hydro_s,			
     "Tâches urbaines" : cassini_surfaces,
-    "Routes": cassini_routes,			
+    "Routes": cassini_routes,
+    "Toponymes": cassini_toponyms
     //"Plan Delagrive": delagrive,
     //"Atlas de Verniquet" : verniquet
 };
@@ -240,6 +249,9 @@ var groupedOverlays = {
 	"Roads and land use": {
    	"Land use" : cassini_surfaces,
    	"Roads": cassini_routes
+	},
+	"Points of interest": {
+	"Toponyms": cassini_toponyms
 	}
 };
 
