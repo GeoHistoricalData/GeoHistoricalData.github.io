@@ -55,42 +55,42 @@ var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
     layers: assemblage,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.foretsanciennes.fr'>WWF/INRA</a> and <a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.foretsanciennes.fr'>WWF/INRA</a> and <a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var cassini_routes = L.tileLayer.wms(geohistoricaldata_url, {
     layers: routes,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var cassini_surfaces = L.tileLayer.wms(geohistoricaldata_url, {
     layers: surfaces,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var cassini_hydro_l = L.tileLayer.wms(geohistoricaldata_url, {
     layers: hydro_l,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var cassini_hydro_s = L.tileLayer.wms(geohistoricaldata_url, {
     layers: hydro_s,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var verniquet = L.tileLayer.wms(geohistoricaldata_url, {
     layers: layerVerniquet,
     format: formatString,
     transparent: false,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });	
 
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -107,7 +107,7 @@ var layerIGNEtatMajor10 = "GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10";
 var layerIGNEtatMajor40 = "GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40";
 var layerIGN = "GEOGRAPHICALGRIDSYSTEMS.MAPS";
 
-var url = "http://gpp3-wxs.ign.fr/" + ignKey + "/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities";
+var url = "https://gpp3-wxs.ign.fr/" + ignKey + "/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities";
 
 var ign_cassini = new L.TileLayer.WMTS(url ,
                                        {
