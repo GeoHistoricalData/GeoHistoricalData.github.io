@@ -269,7 +269,12 @@ var groupedOverlays = {
 	"Toponyms": cassini_toponyms
 	}
 };
-var options = { exclusiveGroups: ["France", "Paris and its Area"], collapsed: isCollapsed };
+
+var options = {
+    exclusiveGroups: ["France", "Paris and its Area"],
+    collapsed: isCollapsed
+};
+
 var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, options).addTo(map);
 
 //L.control.layers(baseLayers, overlays).addTo(map);
