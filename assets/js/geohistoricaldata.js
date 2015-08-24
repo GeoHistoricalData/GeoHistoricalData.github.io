@@ -36,20 +36,24 @@ function sizeLayerControl() {
 }
 
 /* Larger screens get expanded layer control and visible sidebar */
-if (document.body.clientWidth <= 767) {
+if (document.body.clientWidth < 800) {
   var isCollapsed = true;
 } else {
   var isCollapsed = false;
 }
 
 var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/cassini/wms?&TILED=true";
+var geohistoricaldata_paris_url = "http://geohistoricaldata.org/geoserver/paris/wms?&TILED=true";
 var formatString = 'image/png';
 var assemblage = 'cassini:france_cassini_table_assemblage';
 var routes = 'cassini:france_cassini';
 var surfaces = 'cassini:france_cassini_taches_urbaines';
 var hydro_l = 'cassini:france_cassini_hydro';
 var hydro_s = 'cassini:france_cassini_surfaces_hydro';
-var layerVerniquet = 'cassini:verniquet';
+var toponyms = 'cassini:france_cassini_toponyms';
+var layerVerniquet = 'paris:verniquet';
+var layerJacoubet = 'paris:jacoubet';
+var layerCritiqueCassini1 = 'cassini:cs000001_georef_l93';
 
 var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
     layers: assemblage,
@@ -86,12 +90,33 @@ var cassini_hydro_s = L.tileLayer.wms(geohistoricaldata_url, {
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
-var verniquet = L.tileLayer.wms(geohistoricaldata_url, {
+var cassini_toponyms = L.tileLayer.wms(geohistoricaldata_url, {
+    layers: toponyms,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerVerniquet,
     format: formatString,
     transparent: false,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
-});	
+});
+
+var jacoubet = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerJacoubet,
+    format: formatString,
+    transparent: false,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var critiquecassini1 = L.tileLayer.wms(geohistoricaldata_url, {
+    layers: layerCritiqueCassini1,
+    format: formatString,
+    transparent: false,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
 
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
     '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -193,9 +218,11 @@ var baseLayers = {
     "Carte d'Etat-Major 40" : etat_major40,
     "Carte d'Etat-Major 10" : etat_major10,
     "Atlas de Verniquet" : verniquet,
+    "Atlas de Jacoubet" : jacoubet,
     "Plan Delagrive" : delagrive,
     "OpenStreetMap": grayscale,
-    "Cartes IGN":ign_cartes
+    "Cartes IGN":ign_cartes,
+    "Cassini : Planches du Congrès":critiquecassini1
 };
 
 var overlays = {
@@ -203,7 +230,8 @@ var overlays = {
     "Hydrographie linéaire" : cassini_hydro_l,
     "Hydrographie surfacique" : cassini_hydro_s,			
     "Tâches urbaines" : cassini_surfaces,
-    "Routes": cassini_routes,			
+    "Routes": cassini_routes,
+    "Toponymes": cassini_toponyms
     //"Plan Delagrive": delagrive,
     //"Atlas de Verniquet" : verniquet
 };
@@ -221,6 +249,9 @@ var groupedOverlays = {
 	"Roads and land use": {
    	"Land use" : cassini_surfaces,
    	"Roads": cassini_routes
+	},
+	"Points of interest": {
+	"Toponyms": cassini_toponyms
 	}
 };
 
