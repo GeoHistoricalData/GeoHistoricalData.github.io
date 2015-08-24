@@ -171,7 +171,7 @@ L.Control.OSMGeocoder = L.Control.extend({
 			}
 		}
 
-		var url = " http://nominatim.openstreetmap.org/search" + L.Util.getParamString(params),
+		var url = " https://nominatim.openstreetmap.org/search" + L.Util.getParamString(params),
 		script = document.createElement("script");
 
 
