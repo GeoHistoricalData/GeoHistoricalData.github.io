@@ -213,7 +213,8 @@ attributionControl.onAdd = function (map) {
 };
 map.addControl(attributionControl);
 
-var baseLayers = {
+var baseLayers = {};
+/*
     "Cassini Map (IGN)": ign_cassini,
     "Etat-Major Map 40K" : etat_major40,
     "Etat-Major Map 10K" : etat_major10,
@@ -224,6 +225,7 @@ var baseLayers = {
     "IGN Maps":ign_cartes,
     "Cassini Map (Library of Congress)":critiquecassini1
 };
+*/
 
 var overlays = {
     "Sheets" : cassini_grille,
@@ -239,6 +241,19 @@ var overlays = {
 var osmGeocoder = new L.Control.OSMGeocoder();
 
 var groupedOverlays = {
+    "France": {
+	"Cassini Map (IGN)": ign_cassini,
+	"Etat-Major Map 40K" : etat_major40,
+	"OpenStreetMap": grayscale,
+	"IGN Maps":ign_cartes
+    },
+    "Paris and its Area": {
+	"Etat-Major Map 10K" : etat_major10,
+	"Verniquet's Atlas" : verniquet,
+	"Jacoubet's Atlas" : jacoubet,
+	"Delagrive Map" : delagrive,
+	"Cassini Map (Library of Congress)":critiquecassini1
+    },
 	"Structure": {
 		"Sheets" : cassini_grille
 	},
@@ -254,10 +269,8 @@ var groupedOverlays = {
 	"Toponyms": cassini_toponyms
 	}
 };
-
-var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, {
-	collapsed: isCollapsed
-}).addTo(map);
+var options = { exclusiveGroups: ["France", "Paris and its Area"], collapsed: isCollapsed };
+var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, options).addTo(map);
 
 //L.control.layers(baseLayers, overlays).addTo(map);
 
