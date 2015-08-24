@@ -214,24 +214,24 @@ attributionControl.onAdd = function (map) {
 map.addControl(attributionControl);
 
 var baseLayers = {
-    "Carte de Cassini IGN": ign_cassini,
-    "Carte d'Etat-Major 40" : etat_major40,
-    "Carte d'Etat-Major 10" : etat_major10,
-    "Atlas de Verniquet" : verniquet,
-    "Atlas de Jacoubet" : jacoubet,
-    "Plan Delagrive" : delagrive,
+    "Cassini Map (IGN)": ign_cassini,
+    "Etat-Major Map 40K" : etat_major40,
+    "Etat-Major Map 10K" : etat_major10,
+    "Verniquet's Atlas" : verniquet,
+    "Jacoubet's Atlas" : jacoubet,
+    "Delagrive Map" : delagrive,
     "OpenStreetMap": grayscale,
-    "Cartes IGN":ign_cartes,
-    "Cassini : Planches du Congrès":critiquecassini1
+    "IGN Maps":ign_cartes,
+    "Cassini Map (Library of Congress)":critiquecassini1
 };
 
 var overlays = {
-    "Tableau d'assemblage" : cassini_grille,
-    "Hydrographie linéaire" : cassini_hydro_l,
-    "Hydrographie surfacique" : cassini_hydro_s,			
-    "Tâches urbaines" : cassini_surfaces,
-    "Routes": cassini_routes,
-    "Toponymes": cassini_toponyms
+    "Sheets" : cassini_grille,
+    "Linea Hydrography" : cassini_hydro_l,
+    "Areal Hydrography" : cassini_hydro_s,			
+    "Land Use" : cassini_surfaces,
+    "Roads": cassini_routes,
+    "Toponyms": cassini_toponyms
     //"Plan Delagrive": delagrive,
     //"Atlas de Verniquet" : verniquet
 };
@@ -240,7 +240,7 @@ var osmGeocoder = new L.Control.OSMGeocoder();
 
 var groupedOverlays = {
 	"Structure": {
-		"Tableau d'assemblage" : cassini_grille
+		"Sheets" : cassini_grille
 	},
 	"Hydrography": {
    	"Linear" : cassini_hydro_l,
