@@ -54,6 +54,10 @@ var toponyms = 'cassini:france_cassini_toponyms';
 var layerVerniquet = 'paris:verniquet';
 var layerJacoubet = 'paris:jacoubet';
 var layerCritiqueCassini1 = 'cassini:cs000001_georef_l93';
+var layerRuesJacoubet = 'paris:rues_jacoubet';
+var layerRuesVasserot = 'paris:rues_vasserot';
+var layerRuesPoubelle = 'paris:rues_poubelle';
+var layerRuesVerniquet = 'paris:rues_verniquet';
 
 var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
     layers: assemblage,
@@ -113,6 +117,34 @@ var jacoubet = L.tileLayer.wms(geohistoricaldata_paris_url, {
 
 var critiquecassini1 = L.tileLayer.wms(geohistoricaldata_url, {
     layers: layerCritiqueCassini1,
+    format: formatString,
+    transparent: false,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var rues_jacoubet = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerRuesJacoubet,
+    format: formatString,
+    transparent: false,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var rues_vasserot = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerRuesVasserot,
+    format: formatString,
+    transparent: false,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var rues_poubelle = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerRuesPoubelle,
+    format: formatString,
+    transparent: false,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var rues_verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerRuesVerniquet,
     format: formatString,
     transparent: false,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
@@ -252,7 +284,11 @@ var groupedOverlays = {
 	"Verniquet's Atlas" : verniquet,
 	"Jacoubet's Atlas" : jacoubet,
 	"Delagrive Map" : delagrive,
-	"Cassini Map (Library of Congress)":critiquecassini1
+	"Cassini Map (Library of Congress)":critiquecassini1,
+	"Roads from Jacoubet" : rues_jacoubet,
+	"Roads from Vasserot" : rues_vasserot,
+	"Roads from Poubelle" : rues_poubelle,
+	"Roads from Verniquet" : rues_verniquet
     },
 	"Structure": {
 		"Sheets" : cassini_grille
