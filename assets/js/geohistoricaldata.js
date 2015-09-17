@@ -125,28 +125,28 @@ var critiquecassini1 = L.tileLayer.wms(geohistoricaldata_url, {
 var rues_jacoubet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesJacoubet,
     format: formatString,
-    transparent: false,
+    transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var rues_vasserot = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesVasserot,
     format: formatString,
-    transparent: false,
+    transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var rues_poubelle = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesPoubelle,
     format: formatString,
-    transparent: false,
+    transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var rues_verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesVerniquet,
     format: formatString,
-    transparent: false,
+    transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
