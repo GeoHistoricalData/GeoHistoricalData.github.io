@@ -311,7 +311,7 @@ var groupedOverlays = {
 	},
 	"Points of interest": {
 	"Toponyms": cassini_toponyms
-	}
+	},
 	"Population": {
 	"Population in 1794": pop1794
 	}
