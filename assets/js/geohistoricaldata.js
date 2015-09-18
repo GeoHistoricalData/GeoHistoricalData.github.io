@@ -58,6 +58,7 @@ var layerRuesJacoubet = 'paris:rues_jacoubet';
 var layerRuesVasserot = 'paris:rues_vasserot';
 var layerRuesPoubelle = 'paris:rues_poubelle';
 var layerRuesVerniquet = 'paris:rues_verniquet';
+var layerPop1794 = 'cassini:kde_1794_5000';
 
 var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
     layers: assemblage,
@@ -145,6 +146,13 @@ var rues_poubelle = L.tileLayer.wms(geohistoricaldata_paris_url, {
 
 var rues_verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesVerniquet,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var pop1794 = L.tileLayer.wms(geohistoricaldata_url, {
+    layers: layerPop1794,
     format: formatString,
     transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
@@ -294,8 +302,8 @@ var groupedOverlays = {
 		"Sheets" : cassini_grille
 	},
 	"Hydrography": {
-   	"Linear" : cassini_hydro_l,
-   	"Areal" : cassini_hydro_s			
+   		"Linear" : cassini_hydro_l,
+   		"Areal" : cassini_hydro_s			
 	},
 	"Roads and land use": {
    	"Land use" : cassini_surfaces,
@@ -303,6 +311,9 @@ var groupedOverlays = {
 	},
 	"Points of interest": {
 	"Toponyms": cassini_toponyms
+	}
+	"Population": {
+	"Population in 1794": pop1794
 	}
 };
 
