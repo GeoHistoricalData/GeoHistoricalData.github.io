@@ -56,7 +56,6 @@
         <div class="navbar-header">
           <div class="navbar-icon-container">
             <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
-            <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
           </div>
           <a class="navbar-brand" href="#">GeoHistoricalData</a>
         </div>
@@ -90,7 +89,13 @@
                 	<li><a href="http://www.geohistoricaldata.org/geoserver/wfs?request=GetFeature&service=wfs&outputformat=SHAPE-ZIP&typename=cassini:france_cassini_surfaces_hydro" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Areal Hydrography</a></li>
                 </ul>
             </li>
-            <!--<li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;POI List</a></li>-->
+            <li class="dropdown">
+              <a id="levelDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-dot-circle-o white"></i>&nbsp;&nbsp;Level<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="france-btn">&nbsp;&nbsp;France</a></li>
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="paris-btn">&nbsp;&nbsp;Paris</a></li>
+              </ul>
+            </li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>

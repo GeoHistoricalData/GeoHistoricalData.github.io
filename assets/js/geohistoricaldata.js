@@ -9,7 +9,8 @@ $("#about-btn").click(function() {
 });
 
 $("#full-extent-btn").click(function() {
-  map.fitBounds(boroughs.getBounds());
+  //map.fitBounds(boroughs.getBounds());
+  //TODO get correct bounds
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
@@ -254,77 +255,96 @@ attributionControl.onAdd = function (map) {
 map.addControl(attributionControl);
 
 var baseLayers = {};
-/*
-    "Cassini Map (IGN)": ign_cassini,
-    "Etat-Major Map 40K" : etat_major40,
-    "Etat-Major Map 10K" : etat_major10,
-    "Verniquet's Atlas" : verniquet,
-    "Jacoubet's Atlas" : jacoubet,
-    "Delagrive Map" : delagrive,
-    "OpenStreetMap": grayscale,
-    "IGN Maps":ign_cartes,
-    "Cassini Map (Library of Congress)":critiquecassini1
-};
-*/
-
-var overlays = {
-    "Sheets" : cassini_grille,
-    "Linea Hydrography" : cassini_hydro_l,
-    "Areal Hydrography" : cassini_hydro_s,			
-    "Land Use" : cassini_surfaces,
-    "Roads": cassini_routes,
-    "Toponyms": cassini_toponyms
-    //"Plan Delagrive": delagrive,
-    //"Atlas de Verniquet" : verniquet
-};
-
-var osmGeocoder = new L.Control.OSMGeocoder();
-
-var groupedOverlays = {
-    "France": {
-	"Cassini Map (IGN)": ign_cassini,
-	"Etat-Major Map 40K" : etat_major40,
-	"OpenStreetMap": grayscale,
-	"IGN Maps":ign_cartes
-    },
-    "Paris and its Area": {
-	"Etat-Major Map 10K" : etat_major10,
-	"Verniquet's Atlas" : verniquet,
-	"Jacoubet's Atlas" : jacoubet,
-	"Delagrive Map" : delagrive,
-	"Cassini Map (Library of Congress)":critiquecassini1,
-	"Roads from Jacoubet" : rues_jacoubet,
-	"Roads from Vasserot" : rues_vasserot,
-	"Roads from Poubelle" : rues_poubelle,
-	"Roads from Verniquet" : rues_verniquet
-    },
-	"Structure": {
+var groupedOverlays = {};
+function updateLayers(level) {
+    if (level === "france") {
+	baseLayers = {
+	    "Cassini Map (IGN)": ign_cassini,
+	    "Etat-Major Map 40K" : etat_major40,
+	    "Etat-Major Map 10K" : etat_major10,
+	    "OpenStreetMap": grayscale,
+	    "IGN Maps":ign_cartes,
+	    "Cassini Map (Library of Congress)":critiquecassini1
+	};
+	groupedOverlays = {
+	    "Structure": {
 		"Sheets" : cassini_grille
-	},
-	"Hydrography": {
+	    },
+	    "Hydrography": {
    		"Linear" : cassini_hydro_l,
    		"Areal" : cassini_hydro_s			
-	},
-	"Roads and land use": {
-   	"Land use" : cassini_surfaces,
-   	"Roads": cassini_routes
-	},
-	"Points of interest": {
-	"Toponyms": cassini_toponyms
-	},
-	"Population": {
-	"Population in 1794": pop1794
+	    },
+	    "Roads and land use": {
+   		"Land use" : cassini_surfaces,
+   		"Roads": cassini_routes
+	    },
+	    "Points of interest": {
+		"Toponyms": cassini_toponyms
+	    }
+	};
+    } else {
+	baseLayers = {
+	    "Etat-Major Map 10K" : etat_major10,
+	    "Verniquet's Atlas" : verniquet,
+	    "Jacoubet's Atlas" : jacoubet,
+	    "Delagrive Map" : delagrive
 	}
+	groupedOverlays = {
+	    "Rues": {
+		"Roads from Jacoubet" : rues_jacoubet,
+		"Roads from Vasserot" : rues_vasserot,
+		"Roads from Verniquet" : rues_verniquet,
+		"Roads from Poubelle" : rues_poubelle
+	    }
+	};
+    }
 };
 
 var options = {
-    exclusiveGroups: ["France", "Paris and its Area"],
+//    exclusiveGroups: ["France", "Paris and its Area"],
     collapsed: isCollapsed
 };
 
+updateLayers("france");
 var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, options).addTo(map);
 
-//L.control.layers(baseLayers, overlays).addTo(map);
+function updateControlAndLayers(level) {
+    for (i in layerControl._layers) {
+	var layer = layerControl._layers[i].layer;
+	layerControl.removeLayer(layer);
+	if (map.hasLayer(layer)) {
+	    map.removeLayer(layer);
+	}
+    }
+    updateLayers(level);
+    var first = true;
+    for (i in baseLayers) {
+	layerControl._addLayer(baseLayers[i], i);
+	if (first) {
+	    map.addLayer(baseLayers[i]);
+	    first = false;
+	}
+    }
+    for (i in groupedOverlays) {
+	for (var j in groupedOverlays[i]) {
+            layerControl._addLayer(groupedOverlays[i][j], j, i, true);
+	    map.addLayer(groupedOverlays[i][j]);
+      }
+    }
+    layerControl._update();
+}
+
+$("#france-btn").click(function() {
+    updateControlAndLayers("france");
+    return false;
+});
+
+$("#paris-btn").click(function() {
+    updateControlAndLayers("paris");
+    return false;
+});
+
+var osmGeocoder = new L.Control.OSMGeocoder();
 
 L.control.scale().addTo(map);
 map.addControl(osmGeocoder);
