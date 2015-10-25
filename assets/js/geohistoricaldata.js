@@ -173,7 +173,7 @@ var layerIGNEtatMajor10 = "GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10";
 var layerIGNEtatMajor40 = "GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40";
 var layerIGN = "GEOGRAPHICALGRIDSYSTEMS.MAPS";
 
-var url = "https://gpp3-wxs.ign.fr/" + ignKey + "/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetCapabilities";
+var url = "https://wxs.ign.fr/" + ignKey + "/wmts?SERVICE=WMTS&VERSION=1.0.0";
 
 var ign_cassini = new L.TileLayer.WMTS(url ,
                                        {
