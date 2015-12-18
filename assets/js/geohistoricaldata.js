@@ -59,6 +59,8 @@ var layerRuesJacoubet = 'paris:rues_jacoubet';
 var layerRuesVasserot = 'paris:rues_vasserot';
 var layerRuesPoubelle = 'paris:rues_poubelle';
 var layerRuesVerniquet = 'paris:rues_verniquet';
+var layerCloitreSaintBenoit = 'paris:Expr_1855_Cloitre_St_Benoit_georef_Jacoubet';
+
 var layerPop1794 = 'cassini:kde_1794_5000';
 
 var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
@@ -147,6 +149,13 @@ var rues_poubelle = L.tileLayer.wms(geohistoricaldata_paris_url, {
 
 var rues_verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesVerniquet,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var cloitreSaintBenoit = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerCloitreSaintBenoit,
     format: formatString,
     transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
@@ -287,7 +296,8 @@ function updateLayers(level) {
 	    "Etat-Major Map 10K" : etat_major10,
 	    "Verniquet's Atlas" : verniquet,
 	    "Jacoubet's Atlas" : jacoubet,
-	    "Delagrive Map" : delagrive
+	    "Delagrive Map" : delagrive,
+	    "Cloitre Saint Benoit" : cloitreSaintBenoit
 	}
 	groupedOverlays = {
 	    "Rues": {
