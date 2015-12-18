@@ -61,6 +61,12 @@ var layerRuesPoubelle = 'paris:rues_poubelle';
 var layerRuesVerniquet = 'paris:rues_verniquet';
 var layerCloitreSaintBenoit = 'paris:Expr_1855_Cloitre_St_Benoit_georef_Jacoubet';
 var layerClosBruneau = 'paris:Expr_1855_Clos_Bruneau_georef_Jacoubet';
+var layerCollegeDeFrance = 'paris:Expr_1855_College_de_France_georef_Jacoubet';
+var layerMacons = 'paris:Expr_1855_Macons_georef_Jacoubet';
+var layerMaubert = 'paris:Expr_1855_Maubert_georef_Jacoubet';
+var layerNoyers = 'paris:Expr_1855_Noyers_georef_Jacoubet';
+var layerStJeanDeLatran = 'paris:Expr_1855_St_Jean_de_Latran_georef_Jacoubet';
+var layerSorbonne = 'paris:Expr_1855_Sorbonne_georef_Jacoubet';
 
 var layerPop1794 = 'cassini:kde_1794_5000';
 
@@ -168,6 +174,43 @@ var closBruneau = L.tileLayer.wms(geohistoricaldata_paris_url, {
     transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
+var collegeDeFrance = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerCollegeDeFrance,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+var macons = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerMacons,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+var maubert = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerMaubert,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+var noyers = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerNoyers,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+var saintJean = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerStJeanDeLatran,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+var sorbonne = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerSorbonne,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
 
 var pop1794 = L.tileLayer.wms(geohistoricaldata_url, {
     layers: layerPop1794,
@@ -306,7 +349,14 @@ function updateLayers(level) {
 	    "Jacoubet's Atlas" : jacoubet,
 	    "Delagrive Map" : delagrive,
 	    "Cloitre Saint Benoit" : cloitreSaintBenoit,
-	    "Clos Bruneau" : closBruneau
+	    "Clos Bruneau" : closBruneau,
+	    "Collège de France" : collegeDeFrance,
+	    "Macons" : macons,
+	    "Maubert" : maubert,
+	    "Noyers" : noyers,
+	    "Saint Jean de Latran" : saintJean,
+	    "Sorbonne" : sorbonne
+
 	}
 	groupedOverlays = {
 	    "Rues": {
