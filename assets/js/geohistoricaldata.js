@@ -452,6 +452,11 @@ $("#paris-btn").click(function() {
     return false;
 });
 
+$("#latran-btn").click(function() {
+    updateControlAndLayers("latran");
+    return false;
+});
+
 var osmGeocoder = new L.Control.OSMGeocoder();
 
 L.control.scale().addTo(map);
