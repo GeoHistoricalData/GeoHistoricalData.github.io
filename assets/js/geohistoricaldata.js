@@ -350,9 +350,9 @@ var groupedOverlays = {};
 function updateLayers(level) {
     if (level === "france") {
 	baseLayers = {
-	    "Cassini Map (IGN)": ign_cassini,
-	    "Etat-Major Map 40K" : etat_major40,
-	    "Etat-Major Map 10K" : etat_major10,
+	    "Cassini Map 18th c.": ign_cassini,
+	    "Etat-Major Map 40K 19th c." : etat_major40,
+	    "Etat-Major Map 10K 19th c." : etat_major10,
 	    "OpenStreetMap": grayscale,
 	    "IGN Maps":ign_cartes,
 	    "Cassini Map (Library of Congress)":critiquecassini1
