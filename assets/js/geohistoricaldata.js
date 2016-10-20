@@ -382,10 +382,10 @@ function updateLayers(level) {
 	}
 	groupedOverlays = {
 	    "Rues": {
-		"Roads from Jacoubet" : rues_jacoubet,
-		"Roads from Vasserot" : rues_vasserot,
-		"Roads from Verniquet" : rues_verniquet,
-		"Roads from Poubelle" : rues_poubelle
+		"Roads from Vasserot (1808-1836)" : rues_vasserot,
+		"Roads from Jacoubet (1836)" : rues_jacoubet,
+		"Roads from Verniquet (1789)" : rues_verniquet,
+		"Roads from Atlas Municipal (1888)" : rues_poubelle
 	    }
 	};
     } else {
