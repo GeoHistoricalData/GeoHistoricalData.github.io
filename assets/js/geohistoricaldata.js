@@ -53,7 +53,7 @@ var surfaces = 'cassini:france_cassini_taches_urbaines';
 var hydro_l = 'cassini:france_cassini_hydro';
 var hydro_s = 'cassini:france_cassini_surfaces_hydro';
 var toponyms = 'cassini:france_cassini_toponyms';
-var chefslieux = 'cassini:france_cassini_chefs_lieux';
+var chefslieux = 'cassini:france_cassini_chefs_lieux_valides';
 var layerVerniquet = 'paris:verniquet';
 var layerJacoubet = 'paris:jacoubet';
 var layerCritiqueCassini1 = 'cassini:cs000001_georef_l93';
@@ -379,7 +379,7 @@ function updateLayers(level) {
 	    },
 	    "Points of interest": {
 		"Toponyms": cassini_toponyms,
-		"Administrative center": cassini_chefslieux
+		"Administrative centers": cassini_chefslieux
 	    }
 	};
     } else if (level === "paris") {
