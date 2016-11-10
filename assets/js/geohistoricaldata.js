@@ -53,6 +53,7 @@ var surfaces = 'cassini:france_cassini_taches_urbaines';
 var hydro_l = 'cassini:france_cassini_hydro';
 var hydro_s = 'cassini:france_cassini_surfaces_hydro';
 var toponyms = 'cassini:france_cassini_toponyms';
+var chefslieux = 'cassini:france_cassini_chefs_lieux';
 var layerVerniquet = 'paris:verniquet';
 var layerJacoubet = 'paris:jacoubet';
 var layerCritiqueCassini1 = 'cassini:cs000001_georef_l93';
@@ -112,6 +113,13 @@ var cassini_hydro_s = L.tileLayer.wms(geohistoricaldata_url, {
 
 var cassini_toponyms = L.tileLayer.wms(geohistoricaldata_url, {
     layers: toponyms,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var cassini_chefslieux = L.tileLayer.wms(geohistoricaldata_url, {
+    layers: chefslieux,
     format: formatString,
     transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
@@ -315,7 +323,7 @@ var delagrive = new L.TileLayer('http://mapwarper.net/layers/tile/257/{z}/{x}/{y
 var map = L.map('map', {
     center: [46.7,-1],
     zoom: 6,
-    layers: [ign_cassini,cassini_grille,cassini_surfaces,cassini_hydro_l,cassini_hydro_s,cassini_routes],
+    layers: [ign_cassini,cassini_grille,cassini_surfaces,cassini_hydro_l,cassini_hydro_s,cassini_routes,cassini_chefslieux],
     fullscreenControl: true,
     fullscreenControlOptions: { // optional
         title:"Show me the fullscreen !"
@@ -370,7 +378,8 @@ function updateLayers(level) {
    		"Roads": cassini_routes
 	    },
 	    "Points of interest": {
-		"Toponyms": cassini_toponyms
+		"Toponyms": cassini_toponyms,
+		"Administrative center": cassini_chefslieux
 	    }
 	};
     } else if (level === "paris") {
