@@ -379,7 +379,7 @@ function updateLayers(level) {
 	    },
 	    "Points of interest": {
 		"Toponyms": cassini_toponyms,
-		"Administrative centres": cassini_chefslieux
+		"Parishes and Abbeys": cassini_chefslieux
 	    }
 	};
     } else if (level === "paris") {
