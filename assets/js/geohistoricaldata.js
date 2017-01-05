@@ -405,7 +405,7 @@ function updateLayers(level) {
 		"Roads from Atlas Municipal (1888)" : rues_poubelle
 	    },
 	    "Others": {
-		"Réseau de repères de nivellement, Delesse 1858" : points_nivellement_delesse
+		"Repères de nivellement par Delesse (1858)" : points_nivellement_delesse
 	    }
 	};
     } else {
