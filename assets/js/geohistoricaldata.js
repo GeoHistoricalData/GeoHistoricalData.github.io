@@ -403,6 +403,9 @@ function updateLayers(level) {
 		"Roads from Jacoubet (1836)" : rues_jacoubet,
 		"Roads from Verniquet (1789)" : rues_verniquet,
 		"Roads from Atlas Municipal (1888)" : rues_poubelle
+	    },
+	    "Others": {
+		"Réseau de repères de nivellement, Delesse 1858" : points_nivellement_delesse
 	    }
 	};
     } else {
@@ -418,8 +421,7 @@ function updateLayers(level) {
 	    "Cadastre Vasserot" : cadastreVasserot,
 	    "Expropriation 1858" : expropriation1858,
 	    "Ilot 1858" : ilot1858,
-	    "Seine" : seine,
-	    "Réseau de repères de nivellement, Delesse 1858" : points_nivellement_delesse
+	    "Seine" : seine
 	}
 	groupedOverlays = {
 	};
