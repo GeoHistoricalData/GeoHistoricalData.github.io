@@ -61,7 +61,9 @@ var layerRuesJacoubet = 'paris:rues_jacoubet';
 var layerRuesVasserot = 'paris:rues_vasserot';
 var layerRuesPoubelle = 'paris:rues_poubelle';
 var layerRuesVerniquet = 'paris:rues_verniquet';
-var layerNivellementDelesse = 'paris:nivellement_delesse_fusion';
+var layerNivellementDelesseParisPoints = 'paris:nivellement_delesse_fusion';
+var layerNivellementDelesseSEContours = 'paris:nivellement_delesse1880_courbes';
+var layerNivellementDelesseSEPoints = 'paris:nivellement_delesse1880_points';
 var layerCloitreSaintBenoit = 'latran:Expr_1855_Cloitre_St_Benoit';
 var layerClosBruneau = 'latran:Expr_1855_Clos_Bruneau';
 var layerCollegeDeFrance = 'latran:Expr_1855_College_de_France';
@@ -175,8 +177,20 @@ var rues_verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
-var points_nivellement_delesse = L.tileLayer.wms(geohistoricaldata_paris_url, {
-    layers: layerNivellementDelesse,
+var points_nivellement_delesse_paris_points = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerNivellementDelesseParisPoints,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+var points_nivellement_delesse_se_contours = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerNivellementDelesseSEContours,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+var points_nivellement_delesse_se_points = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerNivellementDelesseSEPoints,
     format: formatString,
     transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
@@ -404,8 +418,10 @@ function updateLayers(level) {
 		"Roads from Verniquet (1789)" : rues_verniquet,
 		"Roads from Atlas Municipal (1888)" : rues_poubelle
 	    },
-	    "Others": {
-		"Repères de nivellement, Girard et Delesse (1858)" : points_nivellement_delesse
+	    "Nivellement": {
+		"Nivellement de Paris, Girard et Delesse (1858)" : points_nivellement_delesse_paris_points,
+		"Courbes de niveau du sud-est de Paris, Delesse (1880)" : points_nivellement_delesse_se_contours,
+		"Nivellement du sud-est,Delesse (1880)" : points_nivellement_delesse_se_points,
 	    }
 	};
     } else {
