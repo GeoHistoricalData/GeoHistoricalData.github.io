@@ -61,6 +61,7 @@ var layerRuesJacoubet = 'paris:rues_jacoubet';
 var layerRuesVasserot = 'paris:rues_vasserot';
 var layerRuesPoubelle = 'paris:rues_poubelle';
 var layerRuesVerniquet = 'paris:rues_verniquet';
+var layerNivellementDelesse = 'paris:nivellement_delesse_fusion';
 var layerCloitreSaintBenoit = 'latran:Expr_1855_Cloitre_St_Benoit';
 var layerClosBruneau = 'latran:Expr_1855_Clos_Bruneau';
 var layerCollegeDeFrance = 'latran:Expr_1855_College_de_France';
@@ -169,6 +170,13 @@ var rues_poubelle = L.tileLayer.wms(geohistoricaldata_paris_url, {
 
 var rues_verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesVerniquet,
+    format: formatString,
+    transparent: true,
+    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+});
+
+var points_nivellement_delesse = L.tileLayer.wms(geohistoricaldata_paris_url, {
+    layers: layerNivellementDelesse,
     format: formatString,
     transparent: true,
     attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
@@ -410,7 +418,8 @@ function updateLayers(level) {
 	    "Cadastre Vasserot" : cadastreVasserot,
 	    "Expropriation 1858" : expropriation1858,
 	    "Ilot 1858" : ilot1858,
-	    "Seine" : seine
+	    "Seine" : seine,
+	    "Réseau de repères de nivellement, Delesse 1858" : points_nivellement_delesse
 	}
 	groupedOverlays = {
 	};
