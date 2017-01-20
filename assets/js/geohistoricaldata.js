@@ -419,7 +419,7 @@ function updateLayers(level) {
 		"Roads from Atlas Municipal (1888)" : rues_poubelle
 	    },
 	    "Nivellement": {
-		"Nivellement de Paris, Girard et Delesse (1858)" : points_nivellement_delesse_paris_points,
+		"Nivellement de Paris, Girard (1858)" : points_nivellement_delesse_paris_points,
 		"Courbes de niveau du sud-est de Paris, Delesse (1880)" : points_nivellement_delesse_se_contours,
 		"Nivellement du sud-est,Delesse (1880)" : points_nivellement_delesse_se_points,
 	    }
