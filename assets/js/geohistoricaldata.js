@@ -43,9 +43,9 @@ if (document.body.clientWidth <= 1080) {
   var isCollapsed = false;
 }
 
-var geohistoricaldata_url = "http://geohistoricaldata.org/geoserver/cassini/wms?&TILED=true";
-var geohistoricaldata_paris_url = "http://geohistoricaldata.org/geoserver/paris/wms?&TILED=true";
-var geohistoricaldata_latran_url = "http://geohistoricaldata.org/geoserver/latran/wms?&TILED=true";
+var geohistoricaldata_url = "https://geohistoricaldata.org/geoserver/cassini/wms?&TILED=true";
+var geohistoricaldata_paris_url = "https://geohistoricaldata.org/geoserver/paris/wms?&TILED=true";
+var geohistoricaldata_latran_url = "https://geohistoricaldata.org/geoserver/latran/wms?&TILED=true";
 var formatString = 'image/png';
 var assemblage = 'cassini:france_cassini_table_assemblage';
 var routes = 'cassini:france_cassini';
@@ -83,7 +83,7 @@ var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
     layers: assemblage,
     format: formatString,
     transparent: true,
-    attribution: "<a href='https://www.foretsanciennes.fr'>WWF/INRA</a> and <a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.foretsanciennes.fr'>WWF/INRA</a> and <a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var cassini_routes = L.tileLayer.wms(geohistoricaldata_url, {
@@ -118,14 +118,14 @@ var cassini_toponyms = L.tileLayer.wms(geohistoricaldata_url, {
     layers: toponyms,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var cassini_chefslieux = L.tileLayer.wms(geohistoricaldata_url, {
     layers: chefslieux,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
@@ -139,68 +139,68 @@ var jacoubet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerJacoubet,
     format: formatString,
     transparent: false,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var critiquecassini1 = L.tileLayer.wms(geohistoricaldata_url, {
     layers: layerCritiqueCassini1,
     format: formatString,
     transparent: false,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var rues_jacoubet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesJacoubet,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var rues_vasserot = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesVasserot,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var rues_poubelle = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesPoubelle,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var rues_verniquet = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerRuesVerniquet,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var points_nivellement_delesse_paris_points = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerNivellementDelesseParisPoints,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 var points_nivellement_delesse_se_contours = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerNivellementDelesseSEContours,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 var points_nivellement_delesse_se_points = L.tileLayer.wms(geohistoricaldata_paris_url, {
     layers: layerNivellementDelesseSEPoints,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var cloitreSaintBenoit = L.tileLayer.wms(geohistoricaldata_latran_url, {
     layers: layerCloitreSaintBenoit,
     format: formatString,
     transparent: true,
-    attribution: "<a href='http://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+    attribution: "<a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
 });
 
 var closBruneau = L.tileLayer.wms(geohistoricaldata_latran_url, {
