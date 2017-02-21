@@ -43,9 +43,9 @@ if (document.body.clientWidth <= 1080) {
   var isCollapsed = false;
 }
 
-var geohistoricaldata_url = "https://geohistoricaldata.org/geoserver/cassini/wms?&TILED=true";
-var geohistoricaldata_paris_url = "https://geohistoricaldata.org/geoserver/paris/wms?&TILED=true";
-var geohistoricaldata_latran_url = "https://geohistoricaldata.org/geoserver/latran/wms?&TILED=true";
+var geohistoricaldata_url = "https://www.geohistoricaldata.org/geoserver/cassini/wms?&TILED=true";
+var geohistoricaldata_paris_url = "https://www.geohistoricaldata.org/geoserver/paris/wms?&TILED=true";
+var geohistoricaldata_latran_url = "https://www.geohistoricaldata.org/geoserver/latran/wms?&TILED=true";
 var formatString = 'image/png';
 var assemblage = 'cassini:france_cassini_table_assemblage';
 var routes = 'cassini:france_cassini';
