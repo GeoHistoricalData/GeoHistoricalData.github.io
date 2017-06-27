@@ -43,27 +43,87 @@ if (document.body.clientWidth <= 1080) {
   var isCollapsed = false;
 }
 
-var geohistoricaldata_url = "https://geohistoricaldata.org/geoserver/cassini/wms?&TILED=true";
-var geohistoricaldata_paris_url = "https://geohistoricaldata.org/geoserver/paris/wms?&TILED=true";
-var geohistoricaldata_latran_url = "https://geohistoricaldata.org/geoserver/latran/wms?&TILED=true";
-var formatString = 'image/png';
-var assemblage = 'cassini:france_cassini_table_assemblage';
-var routes = 'cassini:france_cassini';
-var surfaces = 'cassini:france_cassini_taches_urbaines';
-var hydro_l = 'cassini:france_cassini_hydro';
-var hydro_s = 'cassini:france_cassini_surfaces_hydro';
-var toponyms = 'cassini:france_cassini_toponyms';
-var chefslieux = 'cassini:france_cassini_chefs_lieux_valides';
-var layerVerniquet = 'paris:verniquet';
-var layerJacoubet = 'paris:jacoubet';
-var layerCritiqueCassini1 = 'cassini:cs000001_georef_l93';
-var layerRuesJacoubet = 'paris:rues_jacoubet';
-var layerRuesVasserot = 'paris:rues_vasserot';
-var layerRuesPoubelle = 'paris:rues_poubelle';
-var layerRuesVerniquet = 'paris:rues_verniquet';
-var layerNivellementDelesseParisPoints = 'paris:nivellement_delesse_fusion';
-var layerNivellementDelesseSEContours = 'paris:nivellement_delesse1880_courbes';
-var layerNivellementDelesseSEPoints = 'paris:nivellement_delesse1880_points';
+//MAPS PROVIDERS CONFIGS
+var geoportail={
+	url= "https://wxs.ign.fr/4g5kl87ch66khntp6v297m02/wmts?SERVICE=WMTS&VERSION=1.0.0",
+	format = 'image/png'
+};
+
+var geohistoricaldata={
+	cassini_vectors_url= 'http://134.158.33.227/geoserver/cassini-vectors/gwc/service/wmts',
+	paris_rasters_url= 'http://134.158.33.227/geoserver/paris-rasters/gwc/service/wmts',
+	paris_vectors_url= 'http://134.158.33.227/geoserver/paris-vectors/gwc/service/wmts',
+	latran_rasters_url= 'http://134.158.33.227/geoserver/latran-rasters/gwc/service/wmts',
+	latran_vectors_url= 'http://134.158.33.227/geoserver/latran-vectors/gwc/service/wmts',
+	format = 'image/png'
+};
+
+//LEVELS OF DETAIL
+var level_france={
+rasterlayers:
+	{
+		//FROM IGN
+		ign_cassini: 'GEOGRAPHICALGRIDSYSTEMS.CASSINI',
+		ign_em10:'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10',
+		ign_em40:'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',
+		ign_ignmap:'GEOGRAPHICALGRIDSYSTEMS.MAPS'
+	},
+vectorlayers:
+	{
+		//FROM GEOHISTORICALDATA
+		cassini_assemblage:'cassini:france_cassini_table_assemblage',
+		cassini_routes:'cassini:france_cassini',
+		cassini_surfaces:'cassini:france_cassini_taches_urbaines',
+		cassini_hydro_lines:'cassini:france_cassini_hydro',
+		cassini_hydro_surfaces:'cassini:france_cassini_surfaces_hydro',
+		cassini_toponyms:'cassini:france_cassini_toponyms',
+		cassini_chefslieux:'cassini:france_cassini_chefs_lieux_valides',
+		
+        }
+};
+var level_paris={
+	rasterlayers:
+	{
+		//FROM GEOHISTORICALDA
+		delagrive_1728:'paris-rasters:1728-delagrive',
+		delagrive_1740:'paris-rasters:1740-delagrive',
+		lattre_1785:'paris-rasters:1785-lattre',
+		verniquet_1789:'paris-rasters:1789-verniquet',
+		picquet_1809:'paris-rasters:1809-picquet',
+		jacoubet_1836:'paris-rasters:1836-jacoubet',
+		andriveau_1849:'paris-rasters:1849-andriveau-goujon',
+		municipal_1888:'paris-rasters:1888-atlas_municipal'
+	},
+	vectorlayers:
+	{
+		//FROM GEOHISTORICALDA
+		streets_verniquet:'paris-vectors:1789-verniquet-streetnetwork',
+		streets_jacoubet:'paris-vectors:1836-jacoubet-streetnetwork',
+		streets_vasserot:'paris-vectors:1836-vasserot-streetnetwork',
+		streets_municipal1888:'paris-vectors:1888-verniquet-streetnetwork',
+		leveling_delesse_pts:'paris-vectors:nivellement_delesse_fusion',
+		leveling_delesse_se_contours:'paris-vectors:nivellement_delesse1880_courbes',
+		leveling_delesse_se_pts:'paris-vectors:nivellement_delesse1880_points'
+	}
+};
+
+/*
+------------------
+TODO : REPRENDRE AVEC MAURIZIO
+-----------------
+var level_latran={
+	rasterlayers:
+	{
+	},
+	vectorlayers:
+	{
+		buildings_cloitre_stbenoit:'',
+		buildings_clos_bruno:'',
+		buildings_college_de_france:'',
+		buildings_cloitre_stbenoit:'',
+	}
+};
+
 var layerCloitreSaintBenoit = 'latran:Expr_1855_Cloitre_St_Benoit';
 var layerClosBruneau = 'latran:Expr_1855_Clos_Bruneau';
 var layerCollegeDeFrance = 'latran:Expr_1855_College_de_France';
@@ -76,15 +136,19 @@ var layerCadastreVasserot = 'latran:Cadastre_Vasserot';
 var layerExpropriation = 'latran:Expropriation_1858';
 var layerIlot = 'latran:Ilot_1858';
 var layerSeine = 'latran:N1_Seine_35';
+*/
 
-var layerPop1794 = 'cassini:kde_1794_5000';
+//MAPS TO BE DISPLAYED
+var map_france={
+	cassini_grille = L.tileLayer.wms(geohistoricaldata.cassini_vectors_url, {
+	    layers: level_france.vectorlayers.cassini_assemblage,
+	    format: geohistoricaldata.format,
+	    transparent: true,
+	    attribution: "<a href='https://www.foretsanciennes.fr'>WWF/INRA</a> and <a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
+	}),
+	
+}
 
-var cassini_grille = L.tileLayer.wms(geohistoricaldata_url, {
-    layers: assemblage,
-    format: formatString,
-    transparent: true,
-    attribution: "<a href='https://www.foretsanciennes.fr'>WWF/INRA</a> and <a href='https://www.geohistoricaldata.org'>GeoHistoricalData</a>"
-});
 
 var cassini_routes = L.tileLayer.wms(geohistoricaldata_url, {
     layers: routes,
@@ -335,12 +399,15 @@ var etat_major40 = new L.TileLayer.WMTS( url ,
                                              attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>"
                                          }
                                        );		
-
-//layer delagrive
-var delagrive = new L.TileLayer('http://mapwarper.net/layers/tile/257/{z}/{x}/{y}.png', {
-    minZoom: 2,
-    maxZoom: 18
-});
+var delagrive_1728 = new L.TileLayer.WMTS( url ,
+                                         {
+                                             layer: layerIGNEtatMajor40,
+                                             style: "normal",
+                                             tilematrixSet: "PM",
+                                             format: "image/jpeg",
+                                             attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>"
+                                         }
+                                       );
 
 var map = L.map('map', {
     center: [46.7,-1],
