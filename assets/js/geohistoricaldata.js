@@ -72,9 +72,10 @@ var ghd={
 		opts_default:{
 			style:'raster',
 			attribution: "Map data &copy; <a href='https://geohistoricaldata.org/'>https://geohistoricaldata.org/</a>'",
-			tileSize:512,
 			transparent:true,
-			format:'image/png'
+			format:'image/png',
+			maxZoom:21,
+			tileSize:512
 		}
 	}
 };
