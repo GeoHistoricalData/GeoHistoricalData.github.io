@@ -116,8 +116,8 @@ var level_paris={
 console.log(level_paris.delagrive_1728);
 
 var map = L.map('map', {
-    center: [46.7,-1],
-    zoom: 6,
+    center: [48.858,2.34],
+    zoom: 12,
     layers: [level_paris.delagrive_1740],
     fullscreenControl: true,
     fullscreenControlOptions: { // optional
@@ -199,7 +199,7 @@ function updateLayers(level) {
 		//"Leveling of south-west Paris,Delesse (1880)" : points_nivellement_delesse_se_points,
 	    }
 	};
-	map.setView(lat:2.34,lng:48.85,8)
+	//map.setView({lat:2.34,lng:48.85},8);
     } 
     //TODO
     /*
@@ -307,6 +307,7 @@ function submitLoginForm()
 }
 
 map.locate({setView: true, maxZoom: 15});
+
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
     L.marker(e.latlng).addTo(map).bindPopup("You are within " + radius + " meters from this point").openPopup();
