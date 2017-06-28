@@ -123,7 +123,7 @@ var map = L.map('map', {
     fullscreenControlOptions: { // optional
         title:"Show me the fullscreen !"
     },
-    maxZoom: 18,
+    maxZoom: 21,
     attributionControl: false
 });
 
