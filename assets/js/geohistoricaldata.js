@@ -123,10 +123,9 @@ var map = L.map('map', {
     fullscreenControlOptions: { // optional
         title:"Show me the fullscreen !"
     },
-    maxZoom: 21,
     attributionControl: false
 });
-
+map.options.maxZoom=21;
 /* Attribution control */
 function updateAttribution(e) {
   $.each(map._layers, function(index, layer) {
