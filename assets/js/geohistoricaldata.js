@@ -54,7 +54,7 @@ function layerWMS(service_url, _layers, _opts){
 //providers
 var geoportail={
 	wmts:{
-		url:"https://wxs.ign.fr/4g5kl87ch66khntp6v297m02/wmts?SERVICE=WMTS&VERSION=1.0.0",
+		url:"http://wxs.ign.fr/4g5kl87ch66khntp6v297m02/wmts?SERVICE=WMTS&VERSION=1.0.0",
 		opts_default:{
 			style:'raster',
 			attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>'",
@@ -199,6 +199,7 @@ function updateLayers(level) {
 		//"Leveling of south-west Paris,Delesse (1880)" : points_nivellement_delesse_se_points,
 	    }
 	};
+	map.setView(lat:2.34,lng:48.85,8)
     } 
     //TODO
     /*
