@@ -54,14 +54,14 @@ function layerWMS(service_url, _layers, _opts){
 //providers
 var geoportail={
 	wmts:{
-		url:"http://wxs.ign.fr/4g5kl87ch66khntp6v297m02/wmts?SERVICE=WMTS&VERSION=1.0.0",
+		url:"https://wxs.ign.fr/4g5kl87ch66khntp6v297m02/wmts?SERVICE=WMTS&VERSION=1.0.0",
 		opts_default:{
-			style:'normal',
+			style:"normal",
 			attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>'",
 			tileSize:512,
 			transparent:true,
-			tilematrixSet:'PM',
-			format:'image/jpeg'
+			tilematrixSet:"PM",
+			format:"image/jpeg"
 	}
 	}
 };
@@ -85,7 +85,7 @@ var ghd={
 var level_france={
 	//RASTERS 
 	//from IGN
-	ign_cassini: new L.TileLayer.WMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wmts.opts_default),
+	ign_cassini: new L.TileLayer.WMTS(geoportail.wmts.url,"GEOGRAPHICALGRIDSYSTEMS.CASSINI",geoportail.wmts.opts_default),
 	ign_em10:new L.TileLayer.WMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10',geoportail.wmts.opts_default),
 	ign_em40:new L.TileLayer.WMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',geoportail.wmts.opts_default),
 	ign_ignmap:new L.TileLayer.WMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.MAPS',geoportail.wmts.opts_default),
