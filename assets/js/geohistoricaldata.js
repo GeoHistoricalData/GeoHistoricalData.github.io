@@ -51,6 +51,11 @@ function layerWMS(service_url, _layers, _opts){
 	return new L.TileLayer.WMS(service_url,opts);
 }
 
+function layerWMTS(service_url, _layer, _opts){
+	opts = Object.assign(_opts,{layer:_layer});
+	return new L.TileLayer.WMTS(service_url,opts);
+}
+
 //providers
 var geoportail={
 	wmts:{
@@ -85,10 +90,10 @@ var ghd={
 var level_france={
 	//RASTERS 
 	//from IGN
-	ign_cassini: new L.TileLayer.WMTS(geoportail.wmts.url,"GEOGRAPHICALGRIDSYSTEMS.CASSINI",geoportail.wmts.opts_default),
-	ign_em10:new L.TileLayer.WMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10',geoportail.wmts.opts_default),
-	ign_em40:new L.TileLayer.WMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',geoportail.wmts.opts_default),
-	ign_ignmap:new L.TileLayer.WMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.MAPS',geoportail.wmts.opts_default),
+	ign_cassini:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wmts.opts_default),
+	ign_em10:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10',geoportail.wmts.opts_default),
+	ign_em40:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',geoportail.wmts.opts_default),
+	ign_ignmap:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.MAPS',geoportail.wmts.opts_default),
 
 	//VECTORS
 	//from GeoHistoricalData
