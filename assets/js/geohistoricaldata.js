@@ -59,7 +59,7 @@ function layerWMTS(service_url, _layer, _opts){
 //providers
 var geoportail={
 	wmts:{
-		url:"https://wxs.ign.fr/4g5kl87ch66khntp6v297m02/wmts?SERVICE=WMTS&VERSION=1.0.0",
+		url:"https://wxs.ign.fr/0kj8upx63msobitrl3oxgvff/wmts?SERVICE=WMTS&VERSION=1.0.0",
 		opts_default:{
 			style:"normal",
 			attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>'",
