@@ -116,7 +116,14 @@ var level_paris={
 	picquet_1809:layerWMS(ghd.wms.url,'paris-rasters:picquet_1809',ghd.wms.opts_default),
 	jacoubet_1836:layerWMS(ghd.wms.url,'paris-rasters:jacoubet_1836',ghd.wms.opts_default),
 	andriveau_1849:layerWMS(ghd.wms.url,'paris-rasters:andriveau_1849',ghd.wms.opts_default),
-	municipal_1888:layerWMS(ghd.wms.url,'paris-rasters:poubelle_1888',ghd.wms.opts_default)
+	municipal_1888:layerWMS(ghd.wms.url,'paris-rasters:poubelle_1888',ghd.wms.opts_default),
+
+	//VECTORS
+	//from GeoHistoricalData
+	rues_verniquet:layerWMS(ghd.wms.url,'paris-vectors:1790_verniquet',ghd.wms.opts_default),
+	rues_vasserot:layerWMS(ghd.wms.url,'paris-vectors:1836_jacoubet_vasserot',ghd.wms.opts_default),
+	rues_jacoubet:layerWMS(ghd.wms.url,'paris-vectors:1836_jacoubet',ghd.wms.opts_default),
+	rues_poubelle:layerWMS(ghd.wms.url,'paris-vectors:1888_poubelle',ghd.wms.opts_default)
 };
 
 //console.log(level_paris.delagrive_1728);
@@ -194,10 +201,10 @@ function updateLayers(level) {
 	}
 	groupedOverlays = {
 	    "Streets": {
-		//"Streets from Vasserot (1808-1836)" : rues_vasserot,
-		//"Streets from Jacoubet (1836)" : rues_jacoubet,
-		//"Streets from Verniquet (1789)" : rues_verniquet,
-		//"Streets from Atlas Municipal (1888)" : rues_poubelle
+		"Streets from Verniquet (1789)" : rues_verniquet,
+		"Streets from Vasserot (1808-1836)" : rues_vasserot,
+		"Streets from Jacoubet (1836)" : rues_jacoubet,
+		"Streets from Atlas Municipal (1888)" : rues_poubelle
 	    },
 	    "Leveling": {
 		//"Leveling of Paris, Girard (1805)" : points_nivellement_delesse_paris_points,
