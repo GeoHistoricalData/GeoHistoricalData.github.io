@@ -43,7 +43,6 @@ if (document.body.clientWidth <= 1080) {
   var isCollapsed = false;
 }
 
-
 //Convenient function
 
 function layerWMS(service_url, _layers, _opts){
@@ -67,7 +66,7 @@ var geoportail={
 			transparent:true,
 			tilematrixSet:"PM",
 			format:"image/jpeg"
-	}
+		}
 	}
 };
 
@@ -97,13 +96,14 @@ var level_france={
 
 	//VECTORS
 	//from GeoHistoricalData
-	cassini_assemblage:layerWMS(ghd.wms.url,'cassini:france_cassini_table_assemblage',ghd.wms.opts_default),
-	cassini_routes:layerWMS(ghd.wms.url,'cassini:france_cassini',ghd.wms.opts_default),
-	cassini_surfaces:layerWMS(ghd.wms.url,'cassini:france_cassini_taches_urbaines',ghd.wms.opts_default),
-	cassini_hydro_lines:layerWMS(ghd.wms.url,'cassini:france_cassini_hydro',ghd.wms.opts_default),
-	cassini_hydro_surfaces:layerWMS(ghd.wms.url,'cassini:france_cassini_surfaces_hydro',ghd.wms.opts_default),
-	cassini_toponyms:layerWMS(ghd.wms.url,'cassini:france_cassini_toponyms',ghd.wms.opts_default),
-	cassini_chefslieux:layerWMS(ghd.wms.url,'cassini:france_cassini_chefs_lieux_valides',ghd.wms.opts_default),
+	cassini_assemblage:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_table_assemblage',ghd.wms.opts_default),
+	cassini_routes:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini',ghd.wms.opts_default),
+	cassini_surfaces:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_taches_urbaines',ghd.wms.opts_default),
+	cassini_hydro_lines:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_hydro',ghd.wms.opts_default),
+	cassini_hydro_surfaces:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_surfaces_hydro',ghd.wms.opts_default),
+	cassini_toponyms:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_toponyms',ghd.wms.opts_default),
+	cassini_chefslieux:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_chefs_lieux_valides',ghd.wms.opts_default),
+	cassini_forets:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_forets',ghd.wms.opts_default),
 };
 
 var level_paris={
@@ -119,7 +119,7 @@ var level_paris={
 	municipal_1888:layerWMS(ghd.wms.url,'paris-rasters:poubelle_1888',ghd.wms.opts_default)
 };
 
-console.log(level_paris.delagrive_1728);
+//console.log(level_paris.delagrive_1728);
 
 var map = L.map('map', {
     center: [48.858,2.34],
@@ -163,19 +163,20 @@ function updateLayers(level) {
 	};
 	groupedOverlays = {
 	    "Structure": {
-		//"Sheets" : level_france.cassini_assemblage
+		"Sheets" : level_france.cassini_assemblage
 	    },
 	    "Hydrography": {
-   		//"Linear" : level_france.cassini_hydro_l,
-   		//"Areal" : level_france.cassini_hydro_s			
+   		"Linear" : level_france.cassini_hydro_lines,
+   		"Areal" : level_france.cassini_hydro_surfaces
 	    },
 	    "Roads and land use": {
-   		//"Land use" : level_france.cassini_surfaces,
-   		//"Roads": level_france.cassini_routes
+   		"Land use" : level_france.cassini_surfaces,
+		"Forests" : level_france.cassini_forets,
+   		"Roads": level_france.cassini_routes
 	    },
 	    "Points of interest": {
-		//Toponyms": level_france.cassini_toponyms,
-		//"Parishes and Abbeys": level_france.cassini_chefslieux
+		Toponyms": level_france.cassini_toponyms,
+		"Parishes and Abbeys": level_france.cassini_chefslieux
 	    }
 	};
     } else if (level === "paris") {
