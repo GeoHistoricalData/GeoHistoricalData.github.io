@@ -201,10 +201,10 @@ function updateLayers(level) {
 	}
 	groupedOverlays = {
 	    "Streets": {
-		"Streets from Verniquet (1789)" : rues_verniquet,
-		"Streets from Vasserot (1808-1836)" : rues_vasserot,
-		"Streets from Jacoubet (1836)" : rues_jacoubet,
-		"Streets from Atlas Municipal (1888)" : rues_poubelle
+		"Streets from Verniquet (1789)":level_paris.rues_verniquet,
+		"Streets from Vasserot (1808-1836)":level_paris.rues_vasserot,
+		"Streets from Jacoubet (1836)":level_paris.rues_jacoubet,
+		"Streets from Atlas Municipal (1888)":level_paris.rues_poubelle
 	    },
 	    "Leveling": {
 		//"Leveling of Paris, Girard (1805)" : points_nivellement_delesse_paris_points,
