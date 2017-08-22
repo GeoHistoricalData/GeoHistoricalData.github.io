@@ -60,12 +60,11 @@ var geoportail={
 	wmts:{
 		url:"https://wxs.ign.fr/0kj8upx63msobitrl3oxgvff/wmts?SERVICE=WMTS&VERSION=1.0.0",
 		opts_default:{
-			style:"normal",
+			style: "normal",
 			attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>'",
-			tileSize:512,
-			transparent:true,
-			tilematrixSet:"PM",
-			format:"image/jpeg"
+			transparent: true,
+			tilematrixSet: "PM",
+			format: "image/jpeg"
 		}
 	}
 };
