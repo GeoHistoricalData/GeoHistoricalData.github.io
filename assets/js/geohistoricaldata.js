@@ -64,6 +64,8 @@ var geoportail={
 			attribution: "Map data &copy; <a href='http://www.ign.fr'>IGN</a>'",
 			transparent: true,
 			tilematrixSet: "PM",
+			width : "256",
+			height : "256",
 			format: "image/jpeg"
 		}
 	}
