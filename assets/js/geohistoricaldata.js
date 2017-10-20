@@ -130,9 +130,10 @@ var level_paris={
 //console.log(level_paris.delagrive_1728);
 
 var map = L.map('map', {
-    center: [48.858,2.34],
+    //center: [48.858,2.34],
+    center: [45.7624,3.3058],
     zoom: 12,
-    layers: [level_paris.delagrive_1740],
+    layers: [level_france.ign_cassini],
     fullscreenControl: true,
     fullscreenControlOptions: { // optional
         title:"Show me the fullscreen !"
