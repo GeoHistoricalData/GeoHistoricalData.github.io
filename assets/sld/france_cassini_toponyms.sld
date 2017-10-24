@@ -5,7 +5,7 @@
       <sld:Name>Places with cassini-like icons</sld:Name>
       <sld:FeatureTypeStyle>
         <!--
-	      <Rule>
+        <Rule>
           <Title>gold point</Title>
           <PointSymbolizer>
             <Graphic>
@@ -20,12 +20,58 @@
           </PointSymbolizer>
         </Rule>
         -->
+        <!-- LABELS -->
+        <sld:Rule>
+          <sld:Name>Label placement</sld:Name>
+            <TextSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
+              <Label>
+                <ogc:PropertyName>nom</ogc:PropertyName>
+              </Label>      
+              <Font>
+                <CssParameter name="font-family">Arial</CssParameter>
+                <CssParameter name="font-style">normal</CssParameter>
+                 <CssParameter name="font-size">
+                   <ogc:Function name="Categorize">
+                     <!-- Value to transform -->
+                     <ogc:Function name="env">
+                       <ogc:Literal>wms_scale_denominator</ogc:Literal>
+                     </ogc:Function>
+                     <!-- Output values and thresholds -->
+                     <!-- Ranges: -->
+                     <!-- [scale <= 20000, label size = 100m] -->
+                     <!-- [scale > 20000, <= 100000, label size = 200m] -->
+                     <!-- [scale > 100000, hide label] -->
+                     <ogc:Literal>100</ogc:Literal>
+                     <ogc:Literal>20000</ogc:Literal>
+                     <ogc:Literal>300</ogc:Literal>
+                     <ogc:Literal>100000</ogc:Literal>
+                     <ogc:Literal>0</ogc:Literal>
+                   </ogc:Function>
+                 </CssParameter>              
+              </Font>
+              <LabelPlacement>
+                <PointPlacement >
+                  <AnchorPoint>
+                    <AnchorPointX>0.0</AnchorPointX>
+                    <AnchorPointY>0.0</AnchorPointY>
+                  </AnchorPoint>
+                  <Displacement >
+                    <DisplacementX>150</DisplacementX>
+                    <DisplacementY>0</DisplacementY>
+                  </Displacement>
+                </PointPlacement>
+              </LabelPlacement>
+              <Fill>
+                <CssParameter name="fill">#000000</CssParameter>
+              </Fill>
+          </TextSymbolizer>           
+        </sld:Rule>
         <sld:Rule>
           <sld:Name>Chapel</sld:Name>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>type_id</ogc:PropertyName>
-              <ogc:Literal>2</ogc:Literal>
+              <ogc:Literal>5</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <sld:PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
@@ -38,7 +84,7 @@
             </sld:Graphic>
           </sld:PointSymbolizer>
         </sld:Rule>
-	    <sld:Rule>
+      <sld:Rule>
           <sld:Name>Cross</sld:Name>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
@@ -178,7 +224,7 @@
                 <sld:OnlineResource xlink:type="simple" xlink:href="file:///opt/geoserver/data_dir/styles/cassini-assets/mapicons/windmill-1.png"/>
                 <sld:Format>image/png</sld:Format>
               </sld:ExternalGraphic>
-              <sld:Size>630</sld:Size>
+              <sld:Size>680</sld:Size>
             </sld:Graphic>
           </sld:PointSymbolizer>
         </sld:Rule>
@@ -236,6 +282,56 @@
             </sld:Graphic>
           </sld:PointSymbolizer>
         </sld:Rule>
+        <sld:Rule>
+          <sld:Name>Undefined</sld:Name>
+          <ogc:Filter>
+            <ogc:Or>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>type_id</ogc:PropertyName>
+                <ogc:Literal>4</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>type_id</ogc:PropertyName>
+                <ogc:Literal>9</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>type_id</ogc:PropertyName>
+                <ogc:Literal>17</ogc:Literal>
+              </ogc:PropertyIsEqualTo>           
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>type_id</ogc:PropertyName>
+                <ogc:Literal>18</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>type_id</ogc:PropertyName>
+                <ogc:Literal>19</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>type_id</ogc:PropertyName>
+                <ogc:Literal>19</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>type_id</ogc:PropertyName>
+                <ogc:Literal>26</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>type_id</ogc:PropertyName>
+                <ogc:Literal>29</ogc:Literal>
+              </ogc:PropertyIsEqualTo>              
+            </ogc:Or>
+          </ogc:Filter>
+          <PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
+            <Graphic>
+              <Mark>
+                <WellKnownName>square</WellKnownName>
+                <Fill>
+                  <CssParameter name="fill">#ff0000</CssParameter>
+                </Fill>
+              </Mark>
+              <Size>50</Size>
+            </Graphic>
+          </PointSymbolizer>
+        </sld:Rule>        
       </sld:FeatureTypeStyle>
     </sld:UserStyle>
   </sld:NamedLayer>
