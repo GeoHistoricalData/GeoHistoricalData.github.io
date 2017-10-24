@@ -170,6 +170,7 @@ function updateLayers(level) {
     if (level === "france") {
 	baseLayers = {
 	    "Cassini Map 18th c.": level_france.ign_cassini
+            "Cassini sheet n.52 (BnF)": level_france.cassini_52bnf
 	};
 	groupedOverlays = {
 	    "Structure": {
