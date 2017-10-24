@@ -179,7 +179,7 @@ function updateLayers(level) {
    		"Areal" : level_france.cassini_hydro_surfaces
 	    },
 	    "Roads and land use": {
-   		"Land use" : level_france.cassini_surfaces,
+   		"Cities and domains" : level_france.cassini_surfaces,
 		"Forests" : level_france.cassini_forets,
    		"Roads": level_france.cassini_routes
 	    },
