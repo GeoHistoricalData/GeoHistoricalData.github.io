@@ -105,7 +105,7 @@ var level_france={
 	cassini_hydro_surfaces:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_surfaces_hydro',ghd.wms.opts_default),
 	cassini_toponyms:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_toponyms',ghd.wms.opts_default),
 	cassini_chefslieux:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_chefs_lieux_valides',ghd.wms.opts_default),
-	cassini_forets:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_forets',ghd.wms.opts_default),
+	cassini_forets:layerWMS(ghd.wms.url,'cassini-vectors:france_cassini_forets',ghd.wms.opts_default)
 };
 
 var level_paris={
@@ -169,7 +169,7 @@ var groupedOverlays = {};
 function updateLayers(level) {
     if (level === "france") {
 	baseLayers = {
-	    "Cassini Map 18th c.": level_france.ign_cassini
+	    "Cassini Map 18th c.": level_france.ign_cassini,
             "Cassini sheet n.52 (BnF)": level_france.cassini_52bnf
 	};
 	groupedOverlays = {
