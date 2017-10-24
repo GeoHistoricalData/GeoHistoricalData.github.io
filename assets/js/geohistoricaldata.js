@@ -245,7 +245,7 @@ var options = {
     collapsed: isCollapsed
 };
 
-updateLayers("France");
+updateLayers("france");
 var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, options).addTo(map);
 
 function updateControlAndLayers(level) {
