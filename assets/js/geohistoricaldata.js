@@ -94,7 +94,7 @@ var level_france={
 	ign_em10:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10',geoportail.wmts.opts_default),
 	ign_em40:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',geoportail.wmts.opts_default),
 	ign_ignmap:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.MAPS',geoportail.wmts.opts_default),
-	cassini_52bnf:layerWMS(ghd.wmts.url,'cassini-rasters:cassini_bnf_52 ',ghd.wmts.opts_default),
+	cassini_52bnf:layerWMS(ghd.wms.url,'cassini-rasters:cassini_bnf_52 ',ghd.wms.opts_default),
 
 	//VECTORS
 	//from GeoHistoricalData
