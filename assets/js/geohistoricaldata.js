@@ -73,10 +73,10 @@ var geoportail={
 
 var ghd={
 	wms:{
-		url:'http://134.158.33.227/geoserver/wms',
+		url:'http://geohistoricaldata.org/geoserver/wms',
 		opts_default:{
 			style:'raster',
-			attribution: "Map data &copy; <a href='https://geohistoricaldata.org/'>https://geohistoricaldata.org/</a>'",
+			attribution: "Map data &copy; <a href='http://geohistoricaldata.org/'>http://geohistoricaldata.org/</a>'",
 			transparent:true,
 			format:'image/png',
 			maxZoom:21,
