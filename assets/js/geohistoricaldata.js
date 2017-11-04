@@ -168,6 +168,7 @@ var groupedOverlays = {};
 
 function updateLayers(level) {
     if (level === "france") {
+      map.setView([45.7624,3.3058], 12);
 	baseLayers = {
 	    "Cassini Map 18th c.": level_france.ign_cassini,
             "Cassini sheet n.52 (BnF)": level_france.cassini_52bnf
@@ -191,18 +192,19 @@ function updateLayers(level) {
 	    }
 	};
     } else if (level === "paris") {
-	baseLayers = {
-	    "Delagrive's Map, 1728" : level_paris.delagrive_1728,
-	    "Delagrive's Map, 1740" : level_paris.delagrive_1740,
-	    "Lattré's Map, 1785": level_paris.lattre_1785,
-	    "Verniquet's Atlas, 1789" : level_paris.verniquet_1789,
-	    "Picquet's Map, 1809": level_paris.picquet_1809,
-	    "Etat-Major Map 10K, 1840" : level_france.ign_em10,
-	    "Jacoubet's Atlas, 1836" : level_paris.jacoubet_1836,
-	    "Andriveau-Goujon's Map, 1849":level_paris.andriveau_1849,
-	    "Municipal atlas y. 1888, 1888": level_paris.municipal_1888
+    map.setView([48.855426, 2.345846], 14);
+  	baseLayers = {
+  	    "Delagrive's Map, 1728" : level_paris.delagrive_1728,
+  	    "Delagrive's Map, 1740" : level_paris.delagrive_1740,
+  	    "Lattré's Map, 1785": level_paris.lattre_1785,
+  	    "Verniquet's Atlas, 1789" : level_paris.verniquet_1789,
+  	    "Picquet's Map, 1809": level_paris.picquet_1809,
+  	    "Etat-Major Map 10K, 1840" : level_france.ign_em10,
+  	    "Jacoubet's Atlas, 1836" : level_paris.jacoubet_1836,
+  	    "Andriveau-Goujon's Map, 1849":level_paris.andriveau_1849,
+  	    "Municipal atlas y. 1888, 1888": level_paris.municipal_1888
 
-	}
+  	}
 	groupedOverlays = {
 	    "Streets": {
 		"Streets from Verniquet (1789)":level_paris.rues_verniquet,
