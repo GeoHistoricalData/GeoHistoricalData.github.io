@@ -187,8 +187,8 @@ function updateLayers(level) {
    		"Roads": level_france.cassini_routes
 	    },
 	    "Points of interest": {
-		"Toponyms": level_france.cassini_toponyms,
-		"Parishes and Abbeys": level_france.cassini_chefslieux
+		"Places": level_france.cassini_toponyms,
+		"Administrative centers": level_france.cassini_chefslieux
 	    }
 	};
     } else if (level === "paris") {
