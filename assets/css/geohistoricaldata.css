@@ -39,6 +39,9 @@ input[type="radio"], input[type="checkbox"] {
 .table {
   margin-bottom: 0px;
 }
+.navbar a:focus {
+  outline: 0;
+}
 .navbar .navbar-brand {
   font-weight: bold;
   font-size: 25px;
