@@ -292,10 +292,13 @@ $("#latran-btn").click(function() {
     return false;
 });
 
-var osmGeocoder = new L.Control.OSMGeocoder();
+//var osmGeocoder = new L.Control.OSMGeocoder();
 
 L.control.scale().addTo(map);
-map.addControl(osmGeocoder);
+//map.addControl(osmGeocoder);
+
+var geocoder = new L.Control.Geocoder.GeoHistoricalData();
+var control = L.Control.geocoder({geocoder: geocoder}).addTo(map);
 
 // detect fullscreen toggling
 map.on('enterFullscreen', function(){if(window.console) window.console.log('enterFullscreen');});
