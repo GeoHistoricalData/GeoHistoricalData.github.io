@@ -74,7 +74,9 @@ var geoportail={
 		opts_default:{
 			style: "normal",
 			transparent: true,
-			format: "image/png"
+			format: "image/png",
+			maxZoom:21,
+			tileSize:512			
 		}
 	}	
 };
@@ -98,8 +100,8 @@ var ghd={
 var level_france={
 	//RASTERS 
 	//from IGN
-	ign_cassini:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wmts.opts_default),
-	ign_cassini_wms:layerWMS(geoportail.wms.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wms.opts_default),
+	//ign_cassini:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wmts.opts_default),
+	ign_cassini:layerWMS(geoportail.wms.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wms.opts_default),
 	ign_em10:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10',geoportail.wmts.opts_default),
 	ign_em40:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',geoportail.wmts.opts_default),
 	ign_ignmap:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.MAPS',geoportail.wmts.opts_default),
@@ -143,7 +145,7 @@ var map = L.map('map', {
     //center: [48.858,2.34],
     center: [45.7624,3.3058],
     zoom: 12,
-    layers: [level_france.ign_cassini ,level_france.ign_cassini_wms],
+    layers: [level_france.ign_cassini],
     fullscreenControl: true,
     fullscreenControlOptions: { // optional
         title:"Show me the fullscreen !"
@@ -180,7 +182,6 @@ function updateLayers(level) {
       map.setView([45.7624,3.3058], 12);
 	baseLayers = {
 	    "Cassini Map 18th c.": level_france.ign_cassini,
-	    "Cassini Map 18th c. WMS": level_france.ign_cassini_wms,
             "Cassini sheet n.52 (BnF)": level_france.cassini_52bnf,
 	    "No map": L.tileLayer('')
 	};
