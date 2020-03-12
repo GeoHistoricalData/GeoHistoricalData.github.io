@@ -180,6 +180,7 @@ function updateLayers(level) {
       map.setView([45.7624,3.3058], 12);
 	baseLayers = {
 	    "Cassini Map 18th c.": level_france.ign_cassini,
+	    "Cassini Map 18th c. WMS: level_france.ign_cassini_wms,
             "Cassini sheet n.52 (BnF)": level_france.cassini_52bnf,
 	    "No map": L.tileLayer('')
 	};
