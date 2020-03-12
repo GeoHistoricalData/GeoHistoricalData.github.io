@@ -58,7 +58,7 @@ function layerWMTS(service_url, _layer, _opts){
 //providers
 var geoportail={
 	wmts:{
-		url:"http://wxs.ign.fr/0kj8upx63msobitrl3oxgvff/geoportail/r/wmts?SERVICE=WMTS&VERSION=1.0.0",
+		url:"http://wxs.ign.fr/0kj8upx63msobitrl3oxgvff/geoportail/wmts",
 		opts_default:{
 			style: "normal",
 			transparent: true,
