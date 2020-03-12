@@ -58,7 +58,7 @@ function layerWMTS(service_url, _layer, _opts){
 //providers
 var geoportail={
 	wmts:{
-		url:"http://wxs.ign.fr/0kj8upx63msobitrl3oxgvff/wmts?SERVICE=WMTS&VERSION=1.0.0",
+		url:"http://wxs.ign.fr/0kj8upx63msobitrl3oxgvff/geoportail/r/wmts?SERVICE=WMTS&VERSION=1.0.0",
 		opts_default:{
 			style: "normal",
 			transparent: true,
@@ -70,7 +70,7 @@ var geoportail={
 	},
 
 	wms:{
-		url:"http://wxs.ign.fr/0kj8upx63msobitrl3oxgvff/wms",
+		url:"http://wxs.ign.fr/0kj8upx63msobitrl3oxgvff/geoportail/r/wms",
 		opts_default:{
 			style: "normal",
 			transparent: true,
@@ -100,7 +100,7 @@ var ghd={
 var level_france={
 	//RASTERS 
 	//from IGN
-	//ign_cassini:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wmts.opts_default),
+	ign_cassini_wmts:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wmts.opts_default),
 	ign_cassini:layerWMS(geoportail.wms.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wms.opts_default),
 	ign_em10:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10',geoportail.wmts.opts_default),
 	ign_em40:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',geoportail.wmts.opts_default),
@@ -145,7 +145,7 @@ var map = L.map('map', {
     //center: [48.858,2.34],
     center: [45.7624,3.3058],
     zoom: 12,
-    layers: [level_france.ign_cassini],
+    layers: [level_france.ign_cassini, level_france.ign_cassini_wmts],
     fullscreenControl: true,
     fullscreenControlOptions: { // optional
         title:"Show me the fullscreen !"
@@ -182,7 +182,8 @@ function updateLayers(level) {
       map.setView([45.7624,3.3058], 12);
 	baseLayers = {
 	    "Cassini Map 18th c.": level_france.ign_cassini,
-            "Cassini sheet n.52 (BnF)": level_france.cassini_52bnf,
+	    "Cassini Map 18th c. WMTS": level_france.ign_cassini_wmts,
+        "Cassini sheet n.52 (BnF)": level_france.cassini_52bnf,
 	    "No map": L.tileLayer('')
 	};
 	groupedOverlays = {
