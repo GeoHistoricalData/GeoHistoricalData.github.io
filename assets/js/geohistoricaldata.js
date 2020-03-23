@@ -50,9 +50,20 @@ function layerWMS(service_url, _layers, _opts){
 	return new L.TileLayer.WMS(service_url,opts);
 }
 
-function layerWMTS(service_url, _layer, _opts){
-	opts = Object.assign(_opts,{layer:_layer});
-	return new L.TileLayer.WMTS(service_url,opts);
+function layerWMTSIGN(service_url, _layer, _opts){
+	var url = service_url + "?service=WMTS&request=GetTile&version=1.0.0"
+			  + "&layer=" + _layer
+			  + "&style=" + _opts.style
+			  + "&tilematrixSet=" + _opts. tilematrixSet
+			  + "&format=" + _opts.format
+			  + "&height=" + _opts.height
+			  + "&width=" + _opts.width
+			  + "&transparent=" + _opts.transparent
+			  + "&attribution=" + _opts.attribution
+			  + "&maxZoom=" + _opts.maxZoom
+			  + "&minZoom=" + _opts.minZoom
+			  + "&tilematrix={z}&tilerow={y}&tilecol={x}"
+	return new L.TileLayer(url)
 }
 
 //providers
@@ -103,10 +114,10 @@ var ghd={
 var level_france={
 	//RASTERS 
 	//from IGN
-	ign_cassini:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wmts.opts_default),
-	ign_em10:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10',geoportail.wmts.opts_default),
-	ign_em40:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',geoportail.wmts.opts_default),
-	ign_ignmap:layerWMTS(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.MAPS',geoportail.wmts.opts_default),
+	ign_cassini:layerWMTSIGN(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.CASSINI',geoportail.wmts.opts_default),
+	ign_em10:layerWMTSIGN(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR10',geoportail.wmts.opts_default),
+	ign_em40:layerWMTSIGN(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',geoportail.wmts.opts_default),
+	ign_ignmap:layerWMTSIGN(geoportail.wmts.url,'GEOGRAPHICALGRIDSYSTEMS.MAPS',geoportail.wmts.opts_default),
 	cassini_52bnf:layerWMS(ghd.wms.url,'cassini-rasters:cassini_bnf_52 ',ghd.wms.opts_default),
 
 	//VECTORS
