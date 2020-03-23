@@ -58,7 +58,7 @@ function layerWMTS(service_url, _layer, _opts){
 //providers
 var geoportail={
 	wmts:{
-		url:"http://wxs.ign.fr/0kj8upx63msobitrl3oxgvff/geoportail/wmts",
+		url:"http://wxs.ign.fr/lr3v1dh66hx0xlw4xpt1h0q4/geoportail/wmts",
 		opts_default:{
 			style: "normal",
 			transparent: true,
@@ -70,7 +70,7 @@ var geoportail={
 	},
 
 	wms:{
-		url:"http://wxs.ign.fr/0kj8upx63msobitrl3oxgvff/geoportail/r/wms",
+		url:"http://wxs.ign.fr/lr3v1dh66hx0xlw4xpt1h0q4/geoportail/r/wms",
 		opts_default:{
 			style: "normal",
 			transparent: true,
